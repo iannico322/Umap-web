@@ -1,0 +1,99 @@
+.input{
+    display: flex;
+    flex-direction: column;
+  
+    
+    align-items: flex-start;
+    h3{
+        font-size: 1.2rem;
+        margin: 0;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        color: #2e2e2e;
+    }
+    .textField{
+        outline: none;
+        box-sizing: border-box;
+        z-index: 10;
+        width: 100%;
+        font-size: 1.4rem;
+        height: 48px;
+        color: #493636;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: rgba(70, 62, 40, 0.182);
+        border-radius: 11px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(70, 62, 40, 0.3);
+        &::placeholder{
+            color: rgba(82, 82, 82, 0.426);
+        }
+    }
+    h5{
+        margin: 0px;
+        font-weight: 400;
+        font-size: .7rem;
+        margin-left: 2px;
+        margin-top: 3px;
+    }
+}
+
+// .input2{
+//     display: flex;
+//     flex-direction: column;
+  
+    
+//     align-items: flex-start;
+//     h3{
+//         font-size: 1.2rem;
+//         margin: 0;
+//         margin-left: 5px;
+//         margin-bottom: 10px;
+//         color: #2e2e2e;
+//     }
+//     div{
+//         width: 100%;
+//         display: flex;
+//         gap: 5px;
+     
+//         p{
+//             margin: 0;
+//             text-align: center;
+//             color: #595959;
+//             align-items: center;
+//             justify-content: center;
+//             padding: 2% 2%;
+//             background: rgba(255, 187, 0, 0.997);
+//         border-radius: 20px;
+//         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//         backdrop-filter: blur(5px);
+//         -webkit-backdrop-filter: blur(5px);
+//         border: 1px solid rgba(70, 62, 40, 0.3);
+//         }
+
+
+//         .textField{
+//         outline: none;
+//         box-sizing: border-box;
+//         z-index: 10;
+//         width: 100%;
+//         font-size: 1.4rem;
+//         height: 48px;
+//         color: #493636;
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         background: rgba(70, 62, 40, 0.182);
+//         border-radius: 11px;
+//         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+//         backdrop-filter: blur(5px);
+//         -webkit-backdrop-filter: blur(5px);
+//         border: 1px solid rgba(70, 62, 40, 0.3);
+//         &::placeholder{
+//             color: rgba(82, 82, 82, 0.426);
+//         }
+//     }
+//     }
+    
+// }

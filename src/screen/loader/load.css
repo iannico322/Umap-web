@@ -1,0 +1,33 @@
+.show {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 100;
+  
+}
+
+.hide {
+  position: fixed;
+  opacity: 100;
+ 
+  pointer-events: none;
+  animation: ease-in-out out .3s;
+  
+
+
+
+}
+@keyframes out {
+  0%{
+    
+    opacity: 1;
+  }
+  50%{
+    opacity: .9;
+    
+  }
+  100%{
+    
+    opacity: 0;
+  }
+}

@@ -1,0 +1,181 @@
+.search-engine .hideList {
+  display: none;
+}
+
+.search-engine ul {
+  box-sizing: border-box;
+  max-width: 530px;
+  overflow: hidden;
+  list-style: none;
+  font-size: 1rem;
+  color: #493636;
+  padding: 0;
+  background: rgba(229, 229, 229, 0.47);
+  border-radius: 8px;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(2px);
+  min-height: 0px;
+  word-wrap: break-word;
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+.search-engine ul::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+
+.search-engine ul::-webkit-scrollbar {
+  width: 4px;
+  background-color: #F5F5F5;
+}
+
+.search-engine ul::-webkit-scrollbar-thumb {
+  background-color: #ffb509;
+}
+
+.search-engine ul li {
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  word-wrap: break-word;
+  color: rgba(90, 90, 90, 0.733);
+  background-color: rgba(255, 255, 255, 0.607);
+  padding-top: 3%;
+  padding-bottom: 3%;
+  text-indent: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.079);
+}
+
+.search-engine ul li:hover {
+  background: rgba(70, 62, 40, 0.035);
+  color: rgba(52, 52, 52, 0.8);
+}
+
+.search-engine .inputd {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 530px;
+  transition: 500ms ease-in-out;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.search-engine .inputd img {
+  height: 40px;
+  padding-right: 20px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.search-engine .inputd input {
+  position: absolute;
+  outline: none;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1.5rem;
+  height: 60px;
+  color: #493636;
+  padding-left: 20px;
+  padding-right: 60px;
+  background: rgba(70, 62, 40, 0.111);
+  border-radius: 8px;
+  font-weight: 700;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(70, 62, 40, 0.035);
+  margin: 0;
+}
+
+.search-engine .inputd input::placeholder {
+  color: #493636;
+  font-weight: 700;
+}
+
+.search-engine .small {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 10px;
+}
+
+.search-engine2 {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  gap: 0;
+  margin: 0;
+}
+
+.search-engine2 .hideList {
+  display: none;
+}
+
+.search-engine2 .inputd {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-engine2 .inputd input {
+  width: 100%;
+  margin: 0;
+}
+
+.search-engine2 .suggestion-list2 {
+  position: fixed;
+  width: 43.1rem;
+  max-height: 40%;
+  overflow-y: scroll;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  background-color: white;
+}
+
+.search-engine2 .suggestion-list2::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+
+.search-engine2 .suggestion-list2::-webkit-scrollbar {
+  width: 4px;
+  background-color: #F5F5F5;
+}
+
+.search-engine2 .suggestion-list2::-webkit-scrollbar-thumb {
+  background-color: #ff9909;
+}
+
+.search-engine2 .suggestion-list2 li {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.607);
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  text-indent: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.079);
+}
+
+.search-engine2 .suggestion-list2 li:hover {
+  background-color: #efefef;
+}
+
+@media (max-width: 915px) {
+  .search-engine ul {
+    box-sizing: border-box;
+    width: 80vw;
+    overflow: hidden;
+  }
+  .search-engine .inputd {
+    width: 80vw;
+    padding: 0px;
+    margin: 0px;
+  }
+}
