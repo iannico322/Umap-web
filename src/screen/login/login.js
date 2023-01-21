@@ -39,8 +39,8 @@ export const Login = () => {
       .post(url, fData)
       .then((response) => {
         if (response.data === "Login") {
-          // setUsername("");
-          // setPassword("");
+          setUsername("");
+          setPassword("");
         
           setAlert("");
           const url = "http://localhost/umap-server/loginCredentials.php";
@@ -52,42 +52,45 @@ export const Login = () => {
               dispatch(addCredentials(response.data[0].PhoneNum))
               dispatch(addCredentials(response.data[0].password))
               dispatch(addCredentials(response.data[0].UserType))
-             
-              if(response.data[0].UserType ==="admin"){
-                setwarningtype("success")
-                settextwarning("Welcome Back Master")
-                setwarningcolor("green")
-                setTimeout(() => {
-                  setAlert("hideAlert");
-                  setwarningcolor("rgba(70, 62, 40, 0.3)")
-                  document.querySelector(".admin").click();
-                }, 1000);
-              }else if(response.data[0].UserType ==="user"){
-                setwarningcolor("green")
-                setwarningtype("success")
-                settextwarning(`Welcome Back ${response.data[0].FullName}`)
-                setTimeout(() => {
-                  setAlert("hideAlert");
-                  setwarningcolor("rgba(70, 62, 40, 0.3)")
-                  document.querySelector(".main").click();
-                }, 2000);
-              }
-              else{
-                setwarningtype("warning")
-                setwarningcolor("orange")
-                settextwarning("Account not yet accepted")
-                setAlert("invalid");
-                setTimeout(() => {
-                  setwarningcolor("rgba(70, 62, 40, 0.3)")
-                  setAlert("hideAlert");
-                }, 10000);
-              }
-
               
-            })
-          
+              switch (response.data[0].UserType) {
+                case "admin":
+                  setwarningtype("success");
+                  settextwarning("Welcome Back Master");
+                  setwarningcolor("green");
 
-            
+                  setTimeout(() => {
+                    setAlert("hideAlert");
+                    setwarningcolor("rgba(70, 62, 40, 0.3)");
+                    document.querySelector(".admin").click();
+                  }, 1000);
+                  break;
+
+                case "user":
+                  setwarningcolor("green");
+                  setwarningtype("success");
+                  settextwarning(`Welcome Back ${response.data[0].FullName}`);
+
+                  setTimeout(() => {
+                    setAlert("hideAlert");
+                    setwarningcolor("rgba(70, 62, 40, 0.3)");
+                    document.querySelector(".main").click();
+                  }, 2000);
+                  break;
+
+                default:
+                  setwarningtype("warning");
+                  setwarningcolor("orange");
+                  settextwarning("Account not yet accepted");
+                  setAlert("invalid");
+
+                  setTimeout(() => {
+                    setwarningcolor("rgba(70, 62, 40, 0.3)");
+                    setAlert("hideAlert");
+                  }, 10000);
+                  break;
+              }
+            })
         } else {
           setwarningtype("error")
           setwarningcolor("red")
@@ -103,8 +106,6 @@ export const Login = () => {
   }
   return (
     <>
-
-    
       <div className="login-screen animate__animated animate__bounceInLeft">
         <Navbar
           link2="Register"

@@ -30,8 +30,7 @@ export const Profile = () => {
   
       document.querySelector(".login").click();
     } else {
-      // settimer(1000)
-      // setInterval(displayDateTime,timer );
+      
     }
 
 
@@ -126,7 +125,6 @@ export const Profile = () => {
           <div className="header-con">
             <div>
               <h1>Set Schedule</h1>
-
               <img
                 src={Ex}
                 alt=""
@@ -172,13 +170,13 @@ export const Profile = () => {
                 <option value="SUN">SUN</option>
               </select>
             </div>
+
             <div className="time">
               <p className="time-title">Time duration</p>
               <div className="time-inputs">
-                <div>
-                  <p>Start</p>
 
-                  <input
+                <div>
+                  <p>Start</p> <input
                     type="time"
                     required
                     value={startTime}
@@ -205,23 +203,26 @@ export const Profile = () => {
             <button type="submit" className="submit-schedule">
               Submit
             </button>
+
           </form>
         </div>
       </div>
 
 
-
-      <div className="profile-container  animate__animated  animate__bounceInLeft">
+      {/* //profile screen z-index 1 */}
+     <div className="profile-container  animate__animated  animate__bounceInLeft">
         <Navbar2 profile="selected" />
 
         <div className="profile-background">
           <img src={bgImage} alt="" />
         </div>
+
         <div className="profile">
           <h1>{credentials[1]}</h1>
           <button>Edit</button>
         </div>
 
+        {/* //reminder space */}
         <div className="reminder-container">
           <div className="reminder-box">
             <div
@@ -252,6 +253,9 @@ export const Profile = () => {
             ))}
           </div>
         </div>
+
+
+
         <Link to="/umap" className="login"></Link>
       </div>
     </>
