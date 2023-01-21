@@ -26,31 +26,15 @@ const displayTime = () => {
   return timeString
 }
 
-const displayDate = () => {
-  const currentTime = new Date();
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-const month = monthNames[currentTime.getMonth()];
-const date = currentTime.getDate();
-const year = currentTime.getFullYear();
-const dateString = `${month}-${date}-${year}`;
-  return dateString
-}
 
  
 const SearchLog = (text,userid)=>{
   
   
     const url = 'http://localhost/umap-server/searchlog.php';
-
-    
-            
-
     let fData = new FormData();
     fData.append('searchtext', text);
     fData.append('timestamp',displayTime());
-    fData.append('date', displayDate() );
     fData.append('userid', userid );
     axios.post(url, fData ).catch(error=> alert(error));
 
@@ -59,12 +43,6 @@ const SearchLog = (text,userid)=>{
 
 
 export const Search = (props) => {
-  
-
-
-
-        
-      
         let x = true;
         const credentials = useSelector(users);
         const [query, setQuery] = useState(''); // state to hold the search query
@@ -85,17 +63,12 @@ export const Search = (props) => {
           setQuery(searchTerm.toLowerCase());
           setoriginalSearchTerm(searchTerm.toLowerCase()); // update the search query
           const suggestions = rooms.filter(word => word.roomName.toLowerCase().startsWith(query) ||word.roomName.toLowerCase().includes(query) ); // filter the words that match the query
-          
           setSuggestions(suggestions.slice(0,10)); // update the suggestions state with the top 5 matching words
-          
-        
         };
       
         const selectSuggestion = suggestion => {
         const listS =  document.querySelector('.suggestion-list').classList
           listS.add("hideList")
-          
-          
           setQuery(suggestion); // update the search query with the selected suggestion
           setSuggestions([]); // clear the suggestions
         };
@@ -121,10 +94,7 @@ export const Search = (props) => {
                   <div  className="inputd small" >
                   <input type="text"  
                     placeholder="search something"
-                      
-                    value={query} onChange={search}
-                      
-                      />
+                    value={query} onChange={search}/>
                       
                   <img src={icon}  alt="" onClick={()=>{
                      const sh =  document.querySelector('.inputd').classList
@@ -164,7 +134,7 @@ export const Search = (props) => {
                     props.onFloor(`F ${suggestion.floorNumber}`)
                     props.onBlock(`B ${suggestion.blockNumber}`)
                     props.onLoc("")
-                    SearchLog(suggestion.roomName,credentials[0])
+                    SearchLog(suggestion.roomName,props.userID)
 
                     }}
                   onMouseOver={() => {handleHover(suggestion.roomName)

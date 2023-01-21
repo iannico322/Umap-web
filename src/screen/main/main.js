@@ -24,7 +24,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { rooms } from "../../components/search/rooms";
-import Draggable from "react-draggable";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 function MainDasboard() {
 
@@ -263,6 +262,7 @@ function MainDasboard() {
               onFloor={updateQueryFloor}
               onBlock={updateQueryBlock}
               onLoc={updateLoc}
+              userID = {credentials[0]}
             />
           </div>
 

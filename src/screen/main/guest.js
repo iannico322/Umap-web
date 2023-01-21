@@ -29,6 +29,7 @@ function Guest() {
   const [roomfloor, setRoomfloor] = useState("")
   const [roomblock, setRoomblock] = useState("")
   const [mapzoom,setmapzoom] = useState(40)
+  const [loc, setloc] = useState("");
 
   const updateQueryBuilding = newQuery => {
     console.log("itworks")
@@ -49,7 +50,10 @@ function Guest() {
     console.log(newQuery )
     setRoomblock(newQuery); // update the search query with the new value
   };
-
+  const updateLoc = (newQuery) => {
+    console.log(newQuery);
+    setloc(newQuery);
+  };
 
   const [loading, setLoading] = useState("");
  
@@ -103,9 +107,11 @@ function Guest() {
            
             <Search 
               onBuilding={updateQueryBuilding}
-              onRoom = {updateQueryRoom}
-              onFloor = {updateQueryFloor}
-              onBlock = {updateQueryBlock}
+              onRoom={updateQueryRoom}
+              onFloor={updateQueryFloor}
+              onBlock={updateQueryBlock}
+              onLoc={updateLoc}
+              userID = "69" 
             />
           
  
