@@ -118,6 +118,7 @@ function MainDasboard() {
     axios
       .get("http://localhost/umap-server/getEventsToCalendar.php")
       .then(function (response) {
+        console.log(response.data)
         setEvents(response.data);
       });
   }
