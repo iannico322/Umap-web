@@ -1,0 +1,133 @@
+.pdf-body{
+    display: flex;
+    min-height: 10px;
+    table{
+                
+        width: 80%;
+        text-align: left;
+        border-collapse: collapse;
+        thead{
+            background-color: #FDB417;
+            color: #ffffff;
+            font-size: 1.2rem;
+            border-radius: 24px;
+
+
+            tr{
+                th{
+                    border: 1px solid rgba(10, 10, 10, 0.408);
+                    padding: .4rem;
+                    text-indent: 1rem;
+                    font-size:10px ;
+                  
+                }
+            }
+        }
+        tbody{
+            background-color: #ffffff;
+
+            
+            
+            tr{
+                height: 10px;
+                &:hover{
+                    background-color: rgba(126, 126, 126, 0.165);
+                }
+                .table-actions{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    border: 1px solid rgba(26, 26, 26, 0.068);
+                }
+                td{
+                    
+                    
+                    text-indent: 1rem;
+                    font-size:10px;
+                    font-weight: 400;
+                    border: 1px solid rgba(26, 26, 26, 0.524);
+                    
+                    
+
+                }
+            
+            }
+        }
+
+    }
+    .account-con{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        right: 0;
+        button{
+                
+
+/* CSS */
+                
+                background-color: #e1ecf4;
+                border-radius: 3px;
+                border: 1px solid #7aa7c7;
+                box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+                box-sizing: border-box;
+                color: #39739d;
+                cursor: pointer;
+                display: inline-block;
+                font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+                font-size: 13px;
+                font-weight: 400;
+                line-height: 1.15385;
+                margin: 0;
+                outline: none;
+                padding: 8px .8em;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: baseline;
+                white-space: nowrap;
+                margin-top: 30px;
+
+                &:hover,
+                &:focus {
+                background-color: #b3d3ea;
+                color: #2c5777;
+                }
+
+                &:focus {
+                box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+                }
+
+                &:active {
+                background-color: #a0c7e4;
+                box-shadow: none;
+                color: #2c5777;
+                }
+        }
+        
+    .number-of-users{
+        background-color: rgb(238, 238, 238);
+        height: 40px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h2{
+            font-size: 30px;
+            margin: 0;
+            margin-left: 2px;
+            color:#323539;
+        }
+        h4{
+            color:#323539;
+            font-size: 12px;
+            margin: 0;
+            margin-left: 1px;
+            
+        }
+       
+    }}
+}

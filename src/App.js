@@ -14,13 +14,14 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import "animate.css";
-
+import MontlyReport from "./components/pdf/pdf1";
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/umap-website" element={<Navigate replace to="/umap" />} />
-        <Route path="/umap" element={<Welcome />} />
+        <Route path="/umap" element={<MontlyReport/>} />
+        
         <Route path="login" element={<Login />} />
         <Route path="forgot" element={<Forgotpass />} />
         <Route path="profile" element={<Profile />} />
@@ -28,6 +29,7 @@ function App() {
         <Route path="main" element={<MainDasboard />} />
         <Route path="guest" element={<Guest />} />
         <Route path="register" element={<Register />} />
+        <Route path="reportMonth" element={<MontlyReport/>} />
       </Routes>
     </Router>
   );

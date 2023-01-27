@@ -8,11 +8,11 @@ import { Search2 } from "../../components/search/search2";
 import "./admin.css";
 import "./button6.css";
 import { Link } from "react-router-dom";
-
+import Button from '@mui/material/Button';
 import {  useDispatch,useSelector  } from 'react-redux';
 import { rooms } from "../../cache/umapRoom";
 
-export const Admin = () => {
+export const Admin = ({navigation}) => {
 
   const roomses = useSelector(rooms)
   const [room, setRoom] = useState("");
@@ -468,6 +468,18 @@ export const Admin = () => {
                 </table>
               </div>
 
+              <div  className={`${GenerateReport[0]} table3 `}>
+
+               <Button variant="outlined">daily Report</Button> 
+              <Button variant="outlined">weekly Report</Button>
+
+              <Button variant="contained" onClick={()=>{
+                
+                document.querySelector('.reportMonth').click()
+              }}>Monthly Report</Button>
+
+              </div>
+
 
 
 
@@ -478,7 +490,7 @@ export const Admin = () => {
             </div>
           </div>
         </div>
-        
+        <Link to="/reportMonth" className="reportMonth" target="_blank"></Link>
         <Link to="/admin" className="admin"></Link>
       </div>
     </>
