@@ -19,6 +19,9 @@ import { Cloud } from "./Cloud";
 import { Search } from "../../components/search/search";
 
 import { Load } from "../loader/loader";
+import { useSelector, useDispatch } from "react-redux";
+import { users } from "./../../cache/userCredentials";
+import { searchs,addSearch } from "../../cache/userSearch";
 
 function Guest() {
   const [buildingSearch, setBuildingSearch] = useState("");

@@ -15,17 +15,14 @@ export function Location(props) {
   const direction = useRef(null);
 
   useFrame((state) => {
-    direction.current.position.x = 10;
-    direction.current.position.y = 10;
-    direction.current.position.z = -0;
-    direction.current.rotation.set(0, -0.5, 0);
+    
     setTitle(props.roomSearch);
 
     switch (props.search) {
       case "3":
-        direction.current.position.x = -34.3;
+        direction.current.position.x = -28.3;
         direction.current.position.y = 6;
-        direction.current.position.z = -53.2;
+        direction.current.position.z = -52.2;
         direction.current.rotation.set(0, 1.44, 0);
         setTitle(props.roomSearch);
         setdiscription(
@@ -34,9 +31,9 @@ export function Location(props) {
 
         break;
       case "4":
-        direction.current.position.x = -24.3;
+        direction.current.position.x = -18.3;
         direction.current.position.y = 2;
-        direction.current.position.z = -49.2;
+        direction.current.position.z = -48.2;
         direction.current.rotation.set(0, 1.44, 0);
         setTitle(props.roomSearch);
         setdiscription(`ROTC Building | ${props.floor} : ${props.block}`);
@@ -44,7 +41,7 @@ export function Location(props) {
         break;
 
       case "5":
-        direction.current.position.x = -18.3;
+        direction.current.position.x = -14.3;
         direction.current.position.y = 4;
         direction.current.position.z = -33.2;
         direction.current.rotation.set(0, 1.44, 0);
@@ -65,9 +62,9 @@ export function Location(props) {
 
         break;
       case "14":
-        direction.current.position.x = -26.3;
+        direction.current.position.x = -20.3;
         direction.current.position.y = 7;
-        direction.current.position.z = -1.2;
+        direction.current.position.z = 3;
         direction.current.rotation.set(0, 1.44, 0);
         setTitle(props.roomSearch);
         setdiscription(
@@ -76,10 +73,10 @@ export function Location(props) {
 
         break;
       case "16":
-        direction.current.position.x = -10;
+        direction.current.position.x = -8;
         direction.current.position.y = 8;
-        direction.current.position.z = 1;
-        direction.current.rotation.set(0, 1.4, 0);
+        direction.current.position.z = -4;
+        direction.current.rotation.set(0, 1.7, 0);
         setTitle(props.roomSearch);
         setdiscription(`DRER Memorial Hall | ${props.floor} : ${props.block}`);
 
@@ -87,7 +84,7 @@ export function Location(props) {
       case "19":
         direction.current.position.x = 13;
         direction.current.position.y = 4;
-        direction.current.position.z = -26;
+        direction.current.position.z = -24;
         direction.current.rotation.set(0, 1.44, 0);
         setTitle(props.roomSearch);
         setdiscription(
@@ -97,8 +94,8 @@ export function Location(props) {
         break;
 
       case "20":
-        direction.current.position.x = 15.2;
-        direction.current.position.y = 8;
+        direction.current.position.x = 12.2;
+        direction.current.position.y = 4;
         direction.current.position.z = -11;
         direction.current.rotation.set(0, 1.34, 0);
 
@@ -108,18 +105,18 @@ export function Location(props) {
         break;
 
       case "23":
-        direction.current.position.x = -29;
-        direction.current.position.y = 7;
-        direction.current.position.z = 45;
-        direction.current.rotation.set(0, 1.4, 0);
+        direction.current.position.x = -30;
+        direction.current.position.y = 5;
+        direction.current.position.z = 38;
+        direction.current.rotation.set(0, 1.7, 0);
         setTitle(props.roomSearch);
         setdiscription(`LRC | ${props.floor} : ${props.block}`);
 
         break;
       case "24":
-        direction.current.position.x = -10.4;
+        direction.current.position.x = -9.4;
         direction.current.position.y = 5;
-        direction.current.position.z = 55.5;
+        direction.current.position.z = 58.5;
         direction.current.rotation.set(0, 1.84, 0);
 
         setTitle(props.roomSearch);
@@ -127,9 +124,9 @@ export function Location(props) {
 
         break;
       case "25":
-        direction.current.position.x = -14.4;
+        direction.current.position.x = -18.4;
         direction.current.position.y = 5;
-        direction.current.position.z = 37.5;
+        direction.current.position.z = 30.5;
         direction.current.rotation.set(0, 1.84, 0);
         setTitle(props.roomSearch);
         setdiscription(
@@ -161,7 +158,7 @@ export function Location(props) {
         break;
       case "41":
         direction.current.position.x = 6.2;
-        direction.current.position.y = 7;
+        direction.current.position.y = 9;
         direction.current.position.z = 20.6;
         direction.current.rotation.set(0, 1.84, 0);
         setTitle(props.roomSearch);
@@ -170,6 +167,7 @@ export function Location(props) {
         break;
 
       default:
+        
         direction.current.position.x = 33;
         direction.current.position.y = 0;
         direction.current.position.z = -46;

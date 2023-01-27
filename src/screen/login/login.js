@@ -5,7 +5,6 @@ import Cloud1 from "./../../media/image/cloud_2-big.png";
 import { Link } from "react-router-dom";
 import Map2 from "./../../media/image/map3d_2.png";
 import { Navbar } from "../../components/navbar/navbar";
-import { Load } from "../loader/loader";
 import Alert from "@mui/material/Alert";
 import axios from "axios";
 import "./login.css";

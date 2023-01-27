@@ -30,7 +30,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
    
     case "GET":
-        $sql = "select * from events";
+        $sql = "select * from events order by date";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

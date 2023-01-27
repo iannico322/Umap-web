@@ -12,7 +12,7 @@ import axios from "axios";
 import "./register.css";
 
 export const Register = () => {
-  var SHA256 = require("crypto-js/sha256");
+  
 
   const [firstname, setfistname] = useState("");
   const [lastname, setlastname] = useState("");
@@ -58,7 +58,7 @@ export const Register = () => {
         }
         if (!password.match(numberRegex)) {
           setnumval(false)
-          console.log("mumber");
+          console.log("number");
         } else {
           setnumval(true);
         }

@@ -2,7 +2,7 @@
   "name": "umap_website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iannico322.github.io/umap-website/",
+  "homepage": "https://iannico322.github.io/Umap-web/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -27,6 +27,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.14.11",
     "react-zoom-pan-pinch": "^2.2.0",
     "redux-persist": "^6.0.0",
     "three": "0.142.0",

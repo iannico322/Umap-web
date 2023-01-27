@@ -23,19 +23,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { users } from "./../../cache/userCredentials";
-import { rooms } from "../../components/search/rooms";
+import { searchs,addSearch } from "../../cache/userSearch";
+import { rooms } from "../../cache/umapRoom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+
+
 function MainDasboard() {
-
+  const dispatch = useDispatch();
   const credentials = useSelector(users);
+  const searches = useSelector(searchs);
+  const roomses = useSelector(rooms);
 
-  const [buildingSearch, setBuildingSearch] = useState("");
-  const [roomSearch, setRoomSearch] = useState("");
-  const [roomfloor, setRoomfloor] = useState("");
-  const [roomblock, setRoomblock] = useState("");
-
-
-  const [loc, setloc] = useState("");
   const [timer, settimer] = useState(1000);
   const [todayDay, setTodayDay] = useState('');
 
@@ -45,28 +43,6 @@ function MainDasboard() {
 
   const [events, setEvents] = useState([]);
   const [schedules, setSchedules] = useState([]);
-
-  //update the location 3model building location
-  const updateQueryBuilding = (newQuery) => {
-    setBuildingSearch(newQuery);
-  };
-
-  const updateQueryRoom = (newQuery) => {
-    setRoomSearch(newQuery);
-  };
-
-  const updateQueryFloor = (newQuery) => {
-    setRoomfloor(newQuery);
-  };
-
-  const updateQueryBlock = (newQuery) => {
-    setRoomblock(newQuery);
-  };
-
-  const updateLoc = (newQuery) => {
-    console.log(newQuery);
-    setloc(newQuery);
-  };
 
   const dateFormat = (date) => {
     const months = [
@@ -105,15 +81,25 @@ function MainDasboard() {
       settimer(100000000)
       document.querySelector(".login").click();
     } else {
+<<<<<<< HEAD
       settimer(1000)
       setInterval(displayDateTime,timer );
     }
+=======
+      settimer(9000)
+      // setInterval(displayDateTime,timer );
+    }
+    
+    
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
   }, []);
 
   function getEvent() {
     axios
       .get("http://localhost/umap-server/getEventsToCalendar.php")
       .then(function (response) {
+        console.log(response.data)
+        console.log(searches)
         setEvents(response.data);
       });
   }
@@ -128,14 +114,18 @@ function MainDasboard() {
         setSchedules(response.data);
       });
   }
-
+ 
 
   return (
     <>
       {/* <Load time={5000} /> */}
+<<<<<<< HEAD
 
 
       {/* //Whole Screen z 2 */}
+=======
+      
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
       <div className="main-screen  ">
         <div className="page">
           <div className="cloud-model-login  main-cloud">
@@ -202,19 +192,29 @@ function MainDasboard() {
                       date={dateFormat(event.date)}
                       building=" "
                       onClick={() => {
-                        setRoomSearch(`${event.title}`);
-                        setloc(`| ${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`);
-                        setBuildingSearch(`${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`);
-                        
-                        setRoomfloor(dateFormat(event.date));
-                        setRoomblock(event.time);
+
+                        dispatch(addSearch({
+                          "location":`| ${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
+                          "room": `${event.title}`,
+                          "floor": dateFormat(event.date),
+                          "block": event.time,
+                        }))
+                        console.log(searches)
+                    
                       }}
                       onMouseOver={() => {
-                        setRoomSearch(`${event.title}`);
-                        setloc(`| ${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`);
-                        setBuildingSearch(`${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`);
-                        setRoomfloor("");
-                        setRoomblock("");
+                       
+                        dispatch(addSearch({
+                          "location":`| ${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
+                          "room": `${event.title}`,
+                          "floor": "",
+                          "block": "",
+                        }))
+
+
+
                       }}
                       onMouseOut={() => {}}
                     />
@@ -231,14 +231,17 @@ function MainDasboard() {
                       building=" "
                     
                       onClick={() => {
-                        setRoomSearch(`${sched.title}`);
-                        setloc(`| ${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`);
-                        setBuildingSearch(`${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`);
-                        
-                        setRoomfloor(dateFormat(sched.date));
-                        setRoomblock(sched.time);
+
+                        dispatch(addSearch({
+                          "location":`| ${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
+                          "room": `${sched.title}`,
+                          "floor": dateFormat(sched.date),
+                          "block": sched.time,
+                        }))
                       }}
                       onMouseOver={()=>{
+<<<<<<< HEAD
                         setRoomSearch(`${sched.title}`);
                         setloc(`| ${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`);
                         setBuildingSearch(`${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`);
@@ -246,6 +249,20 @@ function MainDasboard() {
                         setRoomfloor(dateFormat(sched.date));
                         setRoomblock(sched.time);
                       }}/>
+=======
+                        dispatch(addSearch({
+                          "location":`| ${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
+                          "room": `${sched.title}`,
+                          "floor": dateFormat(sched.date),
+                          "block": sched.time,
+                        }))
+                      }}
+                    
+                    />
+
+
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
                   ))}
 
 
@@ -255,14 +272,7 @@ function MainDasboard() {
           </div>
 
           <div className="search">
-            <Search
-              onBuilding={updateQueryBuilding}
-              onRoom={updateQueryRoom}
-              onFloor={updateQueryFloor}
-              onBlock={updateQueryBlock}
-              onLoc={updateLoc}
-              userID = {credentials[0]}
-            />
+            <Search/>
           </div>
 
           <div className="map2d-option">
@@ -283,18 +293,35 @@ function MainDasboard() {
             </div>
 
             <div className="map2d-con">
+<<<<<<< HEAD
               <TransformWrapper>
                 <TransformComponent>
                   <img src={Map2d} alt="" />
                 </TransformComponent>
               </TransformWrapper>
+=======
+            <TransformWrapper>
+              <TransformComponent>
+                <img src={Map2d} alt="" />
+              </TransformComponent>
+            </TransformWrapper>
+            
+              
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
             </div>
             
           </div>
-
+          
           <Canvas>
+<<<<<<< HEAD
             <Suspense fallback={null}>
               <Environment files={process.env.PUBLIC_URL + "/textures/light.hdr"} />
+=======
+          <Suspense fullback={null}>
+              <Environment
+                files={process.env.PUBLIC_URL + "/textures/light.hdr"}
+              />
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
 
               <PerspectiveCamera
                 makeDefault
@@ -312,8 +339,11 @@ function MainDasboard() {
                 floatIntensity={0.6}>
                 
                 <Cloud />
+                
                 <Map />
+                
                 <Location
+<<<<<<< HEAD
                   search={buildingSearch}
                   roomSearch={roomSearch}
                   floor={roomfloor}
@@ -322,6 +352,17 @@ function MainDasboard() {
               </Float>
 
             </Suspense>
+=======
+                 loc= {searches.location}
+                 search= {searches.buildingID}
+                 roomSearch = {searches.room}
+                 floor = {searches.floor}
+                 block = {searches.block}
+
+                />
+              </Float>
+              </Suspense>
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
           </Canvas>
         </div>
         <Link to="/umap" className="login"></Link>
@@ -329,6 +370,7 @@ function MainDasboard() {
     </>
   );
 }
+
 
 const displayDateTime = () => {
   var date = document.querySelector(".todaydate");
