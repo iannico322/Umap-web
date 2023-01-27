@@ -11,10 +11,9 @@
 	else{
 		$searchtext = $_POST['searchtext'];
 		$timestamp = $_POST['timestamp'];
-		$date = $_POST['date'];
 		$userid = $_POST['userid'];
 		
-		$sql = "INSERT INTO searchlogs(searchtext,timestamp,date,userid) VALUES('$searchtext','$timestamp','$date','$userid');";
+		$sql = "INSERT INTO searchlogs(searchtext,timestamp,date,userid) VALUES('$searchtext','$timestamp',CURRENT_DATE,'$userid');";
 		$res = mysqli_query($conn, $sql);
 		
 		if($res){

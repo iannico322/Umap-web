@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/umap-website" element={<Navigate replace to="/umap" />} />
+        <Route path="/umap-web" element={<Navigate replace to="/umap" />} />
         <Route path="/umap" element={<MontlyReport/>} />
         
         <Route path="login" element={<Login />} />
