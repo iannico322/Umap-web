@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Umap-web/static/css/main.6c40f1f2.css",
+    "main.js": "/Umap-web/static/js/main.65de39df.js",
+    "static/js/787.fe5dcdae.chunk.js": "/Umap-web/static/js/787.fe5dcdae.chunk.js",
+    "static/media/2dmapc.jpg": "/Umap-web/static/media/2dmapc.78e8fea10ecfc74ddb63.jpg",
+    "static/media/cloud_1.png": "/Umap-web/static/media/cloud_1.337487a541787ded8c14.png",
+    "static/media/map3d_2.png": "/Umap-web/static/media/map3d_2.bb153d738c4a71604771.png",
+    "static/media/map3d_1.png": "/Umap-web/static/media/map3d_1.7a6058e18f8ffc1a655a.png",
+    "static/media/cloud_2-big.png": "/Umap-web/static/media/cloud_2-big.7cab1c8d5e3833ccf004.png",
+    "static/media/cloud_2.png": "/Umap-web/static/media/cloud_2.65d11c865c598fa0820d.png",
+    "static/media/ustp.png": "/Umap-web/static/media/ustp.fba6491190f601c5e87e.png",
+    "static/media/event-pic.png": "/Umap-web/static/media/event-pic.2b8c58f4287e4d62313b.png",
+    "static/media/sched-pic.png": "/Umap-web/static/media/sched-pic.771c2e50b3e5b1d7f951.png",
+    "static/media/umap-logo.png": "/Umap-web/static/media/umap-logo.ffa591be35d11a5c1fed.png",
+    "static/media/Group 274.png": "/Umap-web/static/media/Group 274.3f22e3daae93a326310a.png",
+    "index.html": "/Umap-web/index.html",
+    "static/media/download-icon.svg": "/Umap-web/static/media/download-icon.c0a95d179b4b3c45fb887c15de5f583e.svg",
+    "static/media/menu-open.svg": "/Umap-web/static/media/menu-open.6305055dfa5ea12fc9f3ba50c8eb411a.svg",
+    "static/media/x-icon.svg": "/Umap-web/static/media/x-icon.08233535a9321b39bf5f4a13e34fede0.svg",
+    "static/media/menu.svg": "/Umap-web/static/media/menu.a5cae7a35ec793c5bbe410b86544df4b.svg",
+    "static/media/arrow_forward.svg": "/Umap-web/static/media/arrow_forward.34aa7fcb3ffec8cfbf9136422e9bed25.svg",
+    "static/media/arrow_back.svg": "/Umap-web/static/media/arrow_back.7f971537cfda8f1cde69e94817dee4b7.svg",
+    "main.6c40f1f2.css.map": "/Umap-web/static/css/main.6c40f1f2.css.map",
+    "main.65de39df.js.map": "/Umap-web/static/js/main.65de39df.js.map",
+    "787.fe5dcdae.chunk.js.map": "/Umap-web/static/js/787.fe5dcdae.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6c40f1f2.css",
+    "static/js/main.65de39df.js"
+  ]
+}
