@@ -25,7 +25,17 @@ export const Admin = ({navigation}) => {
 
   const [events, setEvents] = useState([]);
   const [users, setUsers] = useState([]);
-  const [choiceCon,setChoiceCon] = useState("table-box")
+  const [roomdb, setroomdb] = useState([]);
+  
+  const [roomName, setroomName] = useState("");
+  const [buildingNumber, setbuildingNumber] = useState("");
+  const [floorNumber, setfloorNumber] = useState("");
+  const [blockNumber, setblockNumber] = useState("");
+  const [roomType, setroomType] = useState("");
+ 
+
+
+
 
 
 
@@ -33,11 +43,12 @@ export const Admin = ({navigation}) => {
   const [UserChoice,setUserChoice] =useState(["table-box-hide",""])
   const [UserRequestChoice,setUserRequestChoice] = useState(["table-box","active-option"])
   const [GenerateReport,setGenerateReport] = useState(["table-box-hide",""])
-
+  const [RoomGUI,setRoomGUI] = useState(["table-box-hide",""])
 
   useEffect(() => {
     getEvent();
     getUsers();
+    getRoomsAdmin()
     console.log(events);
     console.log(users);
   }, []);
@@ -57,6 +68,17 @@ export const Admin = ({navigation}) => {
         setUsers(response.data);
       });
   }
+
+  function getRoomsAdmin() {
+    axios
+      .get("http://localhost/umap-server/getRoomsAdmin.php")
+      .then(function (response) {
+        setroomdb(response.data);
+        console.log(response.data)
+      });
+  }
+
+
 
   function convertTimeFormat(time) {
     let hours = parseInt(time.split(":")[0]);
@@ -169,6 +191,7 @@ export const Admin = ({navigation}) => {
           setUserChoice(["table-box-hide",""])
           setUserRequestChoice(["table-box-hide",""])
           setGenerateReport(["table-box-hide",""])
+          setRoomGUI(["table-box-hide",""])
           break;
 
         case 1:
@@ -176,6 +199,7 @@ export const Admin = ({navigation}) => {
           setUserChoice(["table-box","active-option"])
           setUserRequestChoice(["table-box-hide",""])
           setGenerateReport(["table-box-hide",""])
+          setRoomGUI(["table-box-hide",""])
           break;
 
         case 2:
@@ -184,12 +208,21 @@ export const Admin = ({navigation}) => {
           setUserRequestChoice(["table-box","active-option"])
           console.log(UserRequestChoice[1])
           setGenerateReport(["table-box-hide",""])
+          setRoomGUI(["table-box-hide",""])
           break;
         case 3:
         setEventChoice(["table-box-hide",""])
         setUserChoice(["table-box-hide",""])
         setUserRequestChoice(["table-box-hide",""])
         setGenerateReport(["table-box","active-option"])
+        setRoomGUI(["table-box-hide",""])
+        break;
+        case 4:
+        setEventChoice(["table-box-hide",""])
+        setUserChoice(["table-box-hide",""])
+        setUserRequestChoice(["table-box-hide",""])
+        setGenerateReport(["table-box-hide",""])
+        setRoomGUI(["table-box","active-option"])
         break;
       
         default:
@@ -289,12 +322,6 @@ export const Admin = ({navigation}) => {
         </div>
       </div>
 
-
-
-
-
-
-
       <div className="admin-profile-container">
         <Navbar3 />
 
@@ -302,83 +329,103 @@ export const Admin = ({navigation}) => {
           <img src={bgImage} alt="" />
         </div>
 
-        
         <div className="admin-profile">
           <h1>Admin Panel</h1>
           <button>Edit</button>
         </div>
 
-
-                 
         <div className="admin-options">
           <div className="options-box">
-
-            
-              <h1
+            <h1
               className={`opt ${EventChoice[1]}`}
-              onClick={()=>{pageChoice(0) }}
-              >Events</h1>
-              <span>/</span>
+              onClick={() => {
+                pageChoice(0);
+              }}
+            >
+              Events
+            </h1>
+            <span>/</span>
 
-              <h1
+            <h1
               className={`opt ${UserChoice[1]}`}
-              onClick={()=>{pageChoice(1) }}
-              >User</h1>
-              <span>/</span>
+              onClick={() => {
+                pageChoice(1);
+              }}
+            >
+              User
+            </h1>
+            <span>/</span>
 
-              <h1
+            <h1
               className={`opt ${UserRequestChoice[1]}`}
-              onClick={()=>{pageChoice(2) }}
-              >User Request</h1>
-              <span>/</span>
+              onClick={() => {
+                pageChoice(2);
+              }}
+            >
+              User Request
+            </h1>
+            <span>/</span>
 
-              <h1
+            <h1
               className={`opt ${GenerateReport[1]}`}
-              onClick={()=>{pageChoice(3) }}
-              >Generate Report</h1>
-              <span>/</span>
-          </div>
-              
-        </div>
+              onClick={() => {
+                pageChoice(3);
+              }}
+            >
+              Generate Report
+            </h1>
+            <span>/</span>
 
+            <h1
+              className={`opt ${RoomGUI[1]}`}
+              onClick={() => {
+                pageChoice(4);
+              }}
+            >
+              Room GUI
+            </h1>
+            <span>/</span>
+          </div>
+        </div>
 
         <div className="admin-account-container">
           <div className="admin-account-box">
-            
-
             <div className="page-choices">
               <div className={`${EventChoice[0]}  admin-reminder-container`}>
-             
-          <div className="admin-reminder-box">
-            <div
-              className="add card"
-              onClick={() => {
-                showForm();
-              }}
-            >
-              <img src={Plus} alt="Plus-icon" />
-            </div>
-            {events.map((event, key) => (
-              <div className="card-admin ">
-                <div className="room-con-admin ">
-                  <div className="stop">{event.title}</div>
-                  {console.log("hi")}
+                <div className="admin-reminder-box">
+                  <div
+                    className="add card"
+                    onClick={() => {
+                      showForm();
+                    }}
+                  >
+                    <img src={Plus} alt="Plus-icon" />
+                  </div>
+                  {events.map((event, key) => (
+                    <div className="card-admin ">
+                      <div className="room-con-admin ">
+                        <div className="stop">{event.title}</div>
+                        {console.log("hi")}
 
-                  <div className="sbottom "> {roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}</div>
-                </div>
+                        <div className="sbottom ">
+                          {" "}
+                          {roomses[0]
+                            .filter(
+                              (z) =>
+                                z.roomID == event.locationID.split(" ").join("")
+                            )
+                            .map((e) => e.roomName)}
+                        </div>
+                      </div>
 
-                <div className="date-con">
-                  <div className="date">{dateFormat(event.date)}</div>
-                  <div className="time">{event.time}</div>
+                      <div className="date-con">
+                        <div className="date">{dateFormat(event.date)}</div>
+                        <div className="time">{event.time}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-      
-
-
-              </div>
-
 
               <div className={`${UserRequestChoice[0]} table1 `}>
                 <table>
@@ -392,35 +439,35 @@ export const Admin = ({navigation}) => {
                       <th>Action</th>
                     </tr>
                   </thead>
-                  {users.filter(e=>e.UserType === "not-u").map((user) => (
-                    <tbody>
-                      <tr>
-                        <td>{user.ID}</td>
-                        <td>{user.FullName}</td>
-                        <td>{user.Email}</td>
-                        <td>{user.password}</td>
+                  {users
+                    .filter((e) => e.UserType === "not-u")
+                    .map((user) => (
+                      <tbody>
+                        <tr>
+                          <td>{user.ID}</td>
+                          <td>{user.FullName}</td>
+                          <td>{user.Email}</td>
+                          <td>{user.password}</td>
 
-                        <td>{user.UserType}</td>
-                        <td className="table-actions">
-                          <button
-                            class="button-6"
-                            role="button"
-                            onClick={() => {
-                              acceptUser(user.ID);
-                            }}
-                          >
-                            Accept
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
+                          <td>{user.UserType}</td>
+                          <td className="table-actions">
+                            <button
+                              class="button-6"
+                              role="button"
+                              onClick={() => {
+                                acceptUser(user.ID);
+                              }}
+                            >
+                              Accept
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
                 </table>
               </div>
 
-
-
-              <div  className={`${UserChoice[0]} table2 `}>
+              <div className={`${UserChoice[0]} table2 `}>
                 <table>
                   <thead>
                     <tr>
@@ -432,34 +479,182 @@ export const Admin = ({navigation}) => {
                       <th>Action</th>
                     </tr>
                   </thead>
-                  {users.filter(e=>e.UserType === "user").map((user) => (
+                  {users
+                    .filter((e) => e.UserType === "user")
+                    .map((user) => (
+                      <tbody>
+                        <tr>
+                          <td>{user.ID}</td>
+                          <td>{user.FullName}</td>
+                          <td>{user.Email}</td>
+                          <td>{user.password}</td>
+
+                          <td>{user.UserType}</td>
+                          <td className="table-actions">
+                            <button
+                              class="button-6"
+                              role="button"
+                              onClick={() => {
+                                banUser(user.ID);
+                              }}
+                            >
+                              Ban
+                            </button>
+
+                            <button
+                              class="button-6"
+                              role="button"
+                              onClick={() => {
+                                acceptUser(user.ID);
+                              }}
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
+                </table>
+              </div>
+
+              <div className={`${GenerateReport[0]} table3 `}>
+                <Button variant="outlined">daily Report</Button>
+                <Button variant="outlined">weekly Report</Button>
+
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    document.querySelector(".reportMonth").click();
+                  }}
+                >
+                  Monthly Report
+                </Button>
+              </div>
+
+              <div
+                className={`${RoomGUI[0]} table3 `}
+                style={{ flexDirection: "column" }}
+              >
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Room Name</th>
+                      <th>Building On</th>
+                      <th>Floor</th>
+                      <th>Block</th>
+                      <th>Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  
+                    <tr>
+                      <td>
+                        <input type="text" value={roomName} onChange={
+                          (e)=>{
+                            setroomName(e.target.value)
+                          }
+                          } placeholder="Room Name" />{" "}
+                      </td>
+                      <td>
+                        <input type="text"  value={buildingNumber} onChange={
+                          (e)=>{
+                            setbuildingNumber(e.target.value)
+                          }
+                        } placeholder="Building Number On" />{" "}
+                      </td>
+                      <td>
+                        <input type="text"  value={floorNumber} onChange={
+                          (e)=>{
+                            setfloorNumber(e.target.value)
+                          }
+                        }  placeholder="Floor" />{" "}
+                      </td>
+                      <td>
+                        <input type="text" value={blockNumber} onChange={
+                          (e)=>{
+                            setblockNumber(e.target.value)
+                          }
+                        }  placeholder="Block" />{" "}
+                      </td>
+                      <td>
+                        <input type="text" value={roomType} onChange={
+                          (e)=>{
+                            setroomType(e.target.value)
+                          }
+                        }   placeholder="Type" />{" "}
+                      </td>
+                      <td className="table-actions">
+                        <button
+                          class="button-6"
+                          role="button"
+                          onClick={() => {
+                            const url = "http://localhost/umap-server/addRoom.php";
+                            
+                              let fData = new FormData();
+                              
+                              fData.append("roomName", `${roomName}`);
+                              fData.append("buildingNumber", `${buildingNumber}`);
+                              fData.append("floorNumber", `${floorNumber}`);
+                              fData.append("blockNumber", `${blockNumber}`);
+                              fData.append("roomType", `${roomType}`);
+                              axios
+                                .post(url, fData).then(()=>{
+                                  setroomName("")
+                                  setbuildingNumber("")
+                                  setfloorNumber("")
+                                  setblockNumber("")
+                                  setroomType("")
+                                })
+                          }}
+                        >
+                          Add
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Room Name</th>
+                      <th>Building On</th>
+                      <th>Floor</th>
+                      <th>Block</th>
+                      <th>Type</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  {roomdb.map((room) => (
                     <tbody>
                       <tr>
-                        <td>{user.ID}</td>
-                        <td>{user.FullName}</td>
-                        <td>{user.Email}</td>
-                        <td>{user.password}</td>
-
-                        <td>{user.UserType}</td>
+                        <td>{room.roomID}</td>
+                        <td>{room.roomName}</td>
+                        <td>{room.buildingNumber}</td>
+                        <td>{room.floorNumber}</td>
+                        <td>{room.blockNumber}</td>
+                        <td>{room.roomType}</td>
                         <td className="table-actions">
                           <button
                             class="button-6"
                             role="button"
                             onClick={() => {
-                              banUser(user.ID);
+                              acceptUser(room.ID);
                             }}
                           >
-                            Ban
+                            Edit
                           </button>
 
                           <button
                             class="button-6"
                             role="button"
                             onClick={() => {
-                              acceptUser(user.ID);
+                              acceptUser(room.ID);
                             }}
                           >
-                            Edit
+                            Delete
                           </button>
                         </td>
                       </tr>
@@ -467,26 +662,6 @@ export const Admin = ({navigation}) => {
                   ))}
                 </table>
               </div>
-
-              <div  className={`${GenerateReport[0]} table3 `}>
-
-               <Button variant="outlined">daily Report</Button> 
-              <Button variant="outlined">weekly Report</Button>
-
-              <Button variant="contained" onClick={()=>{
-                
-                document.querySelector('.reportMonth').click()
-              }}>Monthly Report</Button>
-
-              </div>
-
-
-
-
-
-
-
-
             </div>
           </div>
         </div>

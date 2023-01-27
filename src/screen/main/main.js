@@ -21,7 +21,7 @@ import ArrowBackward from "../../media/image/arrow_back.svg";
 import { Load } from "../loader/loader";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { searchs,addSearch } from "../../cache/userSearch";
 import { rooms } from "../../cache/umapRoom";
@@ -106,7 +106,6 @@ function MainDasboard() {
       .get("http://localhost/umap-server/getSchedulesToCalendar.php")
       .then(function (response) {
         setSchedules(response.data);
-       
       });
   }
  
@@ -122,6 +121,7 @@ function MainDasboard() {
           </div>
         </div>
 
+      {/* //Whole Screen z 1 */}
         <div className="canva">
           <Navbar2 goingTo="selected" />
 
@@ -135,18 +135,18 @@ function MainDasboard() {
                     eventBoard.style.display = "flex";
                     let eventIndicator = document.querySelector(".event");
                     eventIndicator.style.display = "none";
-                  }}
-                >
+                  }}>
                   <div className="title-text">Events</div>
                   <img
                     src={ArrowForward}
                     className="open-event"
-                    alt="arrow-forward"
-                  />
+                    alt="arrow-forward"/>
                 </div>
               </div>
             </div>
 
+
+            {/* //Event eventBoard hide */}
             <div className="event-container ">
               <div className="box">
                 <div className="event-header">
@@ -166,11 +166,14 @@ function MainDasboard() {
                       let eventBoard =
                         document.querySelector(".event-container");
                       eventBoard.style.display = "none";
-                    }}
-                  />
+                    }}/>
                 </div>
+
+                {/* //Event eventBoard show */}
                 <div className="event-content">
-                  {events.map((event, key) => (
+
+
+                  {events.map((event) => (
                     <Card
                       title={event.title}
                       time={event.time}
@@ -204,6 +207,8 @@ function MainDasboard() {
                       onMouseOut={() => {}}
                     />
                   ))}
+
+
 
 
                   {schedules.filter((e)=> e.date === todayDay).filter(e=>e.userID === credentials[0]).map((sched,key)=>(
@@ -264,43 +269,36 @@ function MainDasboard() {
               </div>
 
             </div>
+
             <div className="map2d-con">
-            <TransformWrapper>
-              <TransformComponent>
-                <img src={Map2d} alt="" />
-              </TransformComponent>
-            </TransformWrapper>
-            
-              
+              <TransformWrapper>
+                <TransformComponent>
+                  <img src={Map2d} alt="" />
+                </TransformComponent>
+              </TransformWrapper>
             </div>
             
           </div>
           
           <Canvas>
-          <Suspense fullback={null}>
-              <Environment
-                files={process.env.PUBLIC_URL + "/textures/light.hdr"}
-              />
+            <Suspense fallback={null}>
+              <Environment files={process.env.PUBLIC_URL + "/textures/light.hdr"} />
 
               <PerspectiveCamera
                 makeDefault
                 fov={mapzoom}
-                position={[400, 0, -5]}
-               
-                
-              />
+                position={[400, 0, -5]}/>
 
               <OrbitControls
                 target={[0, 0, 10]}
-                maxPolarAngle={Math.PI * 0.4}
-              />
+                maxPolarAngle={Math.PI * 0.4}/>
 
               <Float
                 speed={0.9}
                 position={[0, 0, 0]}
                 rotationIntensity={0.6}
-                floatIntensity={0.6}
-              >
+                floatIntensity={0.6}>
+                
                 <Cloud />
                 
                 <Map />
@@ -333,7 +331,7 @@ const displayDateTime = () => {
   var day = currentDateAndTime.getDate();
   var hours = currentDateAndTime.getHours();
   var minutes = currentDateAndTime.getMinutes();
-  var seconds = currentDateAndTime.getSeconds();
+
 
   var monthNames = [
     "JAN",
@@ -356,9 +354,7 @@ const displayDateTime = () => {
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
-  if (seconds < 10) {
-    seconds = "0" + seconds;
-  }
+  
 
   var amOrPm = hours < 12 ? "AM" : "PM";
   if (hours > 12) {

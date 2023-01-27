@@ -20,8 +20,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/umap-web" element={<Navigate replace to="/umap" />} />
+        <Route path="/umap" element={<Welcome />} />
         <Route path="/umap" element={<MontlyReport/>} />
-        
         <Route path="login" element={<Login />} />
         <Route path="forgot" element={<Forgotpass />} />
         <Route path="profile" element={<Profile />} />

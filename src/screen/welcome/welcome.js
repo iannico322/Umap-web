@@ -6,18 +6,18 @@ import Map1 from "./../../media/image/map3d_1.png";
 import { Link } from "react-router-dom";
 import { Load } from "../loader/loader";
 import downloadIcon from "../../media/image/download-icon.svg";
-import { useDispatch,useSelector } from "react-redux";
-import { rooms,addRoom } from "../../cache/umapRoom";
+import { useDispatch} from "react-redux";
+import { addRoom } from "../../cache/umapRoom";
 import "./welcome.css";
 import "animate.css";
-import { useState,useEffect } from "react";
+import {useEffect } from "react";
 import axios from "axios";
 
 
 
 export const Welcome = () => {
-  const roomses = useSelector(rooms)
   const dispatch = useDispatch()
+  
   useEffect(() => {
     getRooms();
   }, []);
