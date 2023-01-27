@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Umap-web/static/css/main.6c40f1f2.css",
-    "main.js": "/Umap-web/static/js/main.65de39df.js",
+    "main.css": "/Umap-web/static/css/main.fd29e3ff.css",
+    "main.js": "/Umap-web/static/js/main.5bc83dbd.js",
     "static/js/787.fe5dcdae.chunk.js": "/Umap-web/static/js/787.fe5dcdae.chunk.js",
     "static/media/2dmapc.jpg": "/Umap-web/static/media/2dmapc.78e8fea10ecfc74ddb63.jpg",
     "static/media/cloud_1.png": "/Umap-web/static/media/cloud_1.337487a541787ded8c14.png",
@@ -21,12 +21,12 @@
     "static/media/menu.svg": "/Umap-web/static/media/menu.a5cae7a35ec793c5bbe410b86544df4b.svg",
     "static/media/arrow_forward.svg": "/Umap-web/static/media/arrow_forward.34aa7fcb3ffec8cfbf9136422e9bed25.svg",
     "static/media/arrow_back.svg": "/Umap-web/static/media/arrow_back.7f971537cfda8f1cde69e94817dee4b7.svg",
-    "main.6c40f1f2.css.map": "/Umap-web/static/css/main.6c40f1f2.css.map",
-    "main.65de39df.js.map": "/Umap-web/static/js/main.65de39df.js.map",
+    "main.fd29e3ff.css.map": "/Umap-web/static/css/main.fd29e3ff.css.map",
+    "main.5bc83dbd.js.map": "/Umap-web/static/js/main.5bc83dbd.js.map",
     "787.fe5dcdae.chunk.js.map": "/Umap-web/static/js/787.fe5dcdae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c40f1f2.css",
-    "static/js/main.65de39df.js"
+    "static/css/main.fd29e3ff.css",
+    "static/js/main.5bc83dbd.js"
   ]
 }
