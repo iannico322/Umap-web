@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { searchs,addSearch } from "../../cache/userSearch";
-import { rooms } from "../../components/search/rooms";
+import { rooms } from "../../cache/umapRoom";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 
@@ -32,6 +32,7 @@ function MainDasboard() {
   const dispatch = useDispatch();
   const credentials = useSelector(users);
   const searches = useSelector(searchs);
+  const roomses = useSelector(rooms);
 
   const [timer, settimer] = useState(1000);
   const [todayDay, setTodayDay] = useState('');
@@ -178,8 +179,8 @@ function MainDasboard() {
                       onClick={() => {
 
                         dispatch(addSearch({
-                          "location":`| ${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
-                          "buildingID":`${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
+                          "location":`| ${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
                           "room": `${event.title}`,
                           "floor": dateFormat(event.date),
                           "block": event.time,
@@ -190,8 +191,8 @@ function MainDasboard() {
                       onMouseOver={() => {
                        
                         dispatch(addSearch({
-                          "location":`| ${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
-                          "buildingID":`${rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
+                          "location":`| ${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.buildingNumber)}`,
                           "room": `${event.title}`,
                           "floor": "",
                           "block": "",
@@ -215,8 +216,8 @@ function MainDasboard() {
                       onClick={() => {
 
                         dispatch(addSearch({
-                          "location":`| ${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
-                          "buildingID":`${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
+                          "location":`| ${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
                           "room": `${sched.title}`,
                           "floor": dateFormat(sched.date),
                           "block": sched.time,
@@ -224,8 +225,8 @@ function MainDasboard() {
                       }}
                       onMouseOver={()=>{
                         dispatch(addSearch({
-                          "location":`| ${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
-                          "buildingID":`${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
+                          "location":`| ${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
+                          "buildingID":`${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
                           "room": `${sched.title}`,
                           "floor": dateFormat(sched.date),
                           "block": sched.time,

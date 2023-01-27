@@ -19,10 +19,13 @@ import { Cloud } from "./Cloud";
 import { Search } from "../../components/search/search";
 
 import { Load } from "../loader/loader";
+import { useSelector, useDispatch } from "react-redux";
+import { users } from "./../../cache/userCredentials";
+import { searchs,addSearch } from "../../cache/userSearch";
 
 
 function Guest() {
-
+  const searches = useSelector(searchs)
   const [buildingSearch, setBuildingSearch] = useState("")
   const [roomSearch, setRoomSearch] = useState("")
 
@@ -106,12 +109,6 @@ function Guest() {
           <div className="search">
            
             <Search 
-              onBuilding={updateQueryBuilding}
-              onRoom={updateQueryRoom}
-              onFloor={updateQueryFloor}
-              onBlock={updateQueryBlock}
-              onLoc={updateLoc}
-              userID = "69" 
             />
           
  
@@ -167,12 +164,13 @@ function Guest() {
               
               <Cloud/>
                 <Map/>
-                < Location
-                  search = {buildingSearch}
-                  roomSearch = {roomSearch}
-                  floor = {roomfloor}
-                  block = {roomblock}
-                  
+                <Location
+                 loc= {searches.location}
+                 search= {searches.buildingID}
+                 roomSearch = {searches.room}
+                 floor = {searches.floor}
+                 block = {searches.block}
+
                 />
               </Float>
             </Suspense>

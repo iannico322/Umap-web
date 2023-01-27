@@ -8,9 +8,13 @@ import { Search2 } from "../../components/search/search2";
 import "./admin.css";
 import "./button6.css";
 import { Link } from "react-router-dom";
-import { rooms } from "../../components/search/rooms";
+
+import {  useDispatch,useSelector  } from 'react-redux';
+import { rooms } from "../../cache/umapRoom";
 
 export const Admin = () => {
+
+  const roomses = useSelector(rooms)
   const [room, setRoom] = useState("");
 
   const [title, setTitle] = useState("");
@@ -360,7 +364,7 @@ export const Admin = () => {
                   <div className="stop">{event.title}</div>
                   {console.log("hi")}
 
-                  <div className="sbottom "> {rooms.filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}</div>
+                  <div className="sbottom "> {roomses[0].filter(z=>z.roomID == event.locationID.split(" ").join("")).map(e=>e.roomName)}</div>
                 </div>
 
                 <div className="date-con">

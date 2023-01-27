@@ -6,23 +6,45 @@ import Map1 from "./../../media/image/map3d_1.png";
 import { Link } from "react-router-dom";
 import { Load } from "../loader/loader";
 import downloadIcon from "../../media/image/download-icon.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { rooms,addRoom } from "../../cache/umapRoom";
 import "./welcome.css";
 import "animate.css";
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 
 
 export const Welcome = () => {
+  const roomses = useSelector(rooms)
   const dispatch = useDispatch()
+  useEffect(() => {
+    getRooms();
+  }, []);
+
+
+  
+
+
+
+  
+
+  function getRooms() {
+    axios
+      .get("http://localhost/umap-server/getRooms.php")
+      .then(function (response) {
+        dispatch(addRoom([response.data]))
+          // console.log(roomses[0].filter(e=>e.buildingNumber == 9).map(e=>e.roomName))
+          
+      });
+  }
+  
+
   return (
     <>
    
 
     <Load time = {3000}/>
-
-      
-
       <div className="welcome-screen ">
         <Navbar
           link1="Sign In"

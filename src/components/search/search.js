@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import Magnifying from './../../media/image/Magnifier.png'
 import Ex from "../../media/image/x-icon.svg"
-import {rooms} from "./rooms"
+// import {rooms} from "./rooms"
 import axios from 'axios'
 import "./search.css"
 import {  useDispatch,useSelector  } from 'react-redux';
@@ -10,11 +10,11 @@ import {
 } from './../../cache/userCredentials';
 import { searchs } from '../../cache/userSearch'
 import { addSearch } from '../../cache/userSearch'
-
+import { rooms } from '../../cache/umapRoom'
 
 const displayTime = () => {
   
-
+ 
   
   const currentTime = new Date();
   const hours = currentTime.getHours();
@@ -48,6 +48,7 @@ const SearchLog = (text,userid)=>{
 
 export const Search = (props) => {
         let x = true;
+        const roomses = useSelector(rooms)
         const dispatch = useDispatch();
         const credentials = useSelector(users);
         const searches = useSelector(searchs);
@@ -70,7 +71,7 @@ export const Search = (props) => {
           
           setQuery(searchTerm.toLowerCase());
           setoriginalSearchTerm(searchTerm.toLowerCase()); // update the search query
-          const suggestions = rooms.filter(word => word.roomName.toLowerCase().startsWith(query) ||word.roomName.toLowerCase().includes(query) ); // filter the words that match the query
+          const suggestions = roomses[0].filter(word => word.roomName.toLowerCase().startsWith(query) ||word.roomName.toLowerCase().includes(query) ); // filter the words that match the query
           setSuggestions(suggestions.slice(0,10)); // update the suggestions state with the top 5 matching words
         };
       
@@ -147,7 +148,7 @@ export const Search = (props) => {
 
                     dispatch(addSearch({
                       "location":"",
-                      "buildingID":suggestion.buildingNumber,
+                      "buildingID":`${suggestion.buildingNumber}`,
                       "room": suggestion.roomName,
                       "floor":`F ${suggestion.floorNumber}`,
                       "block":`B ${suggestion.blockNumber}`,
@@ -159,7 +160,7 @@ export const Search = (props) => {
                   onMouseOver={() => {handleHover(suggestion.roomName)
                     dispatch(addSearch({
                       "location":"",
-                      "buildingID":suggestion.buildingNumber,
+                      "buildingID":`${suggestion.buildingNumber}`,
                       "room": suggestion.roomName,
                       "floor":`F ${suggestion.floorNumber}`,
                       "block":`B ${suggestion.blockNumber}`,

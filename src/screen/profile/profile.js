@@ -10,13 +10,13 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { searchs, addSearch } from "../../cache/userSearch";
-import { rooms } from "../../components/search/rooms";
+import { rooms } from "../../cache/umapRoom";
 
 export const Profile = () => {
   const dispatch = useDispatch();
   const credentials = useSelector(users);
   const searches = useSelector(searchs);
-
+  const roomses = useSelector(rooms);
   const [room, setRoom] = useState("");
 
   const [title, setTitle] = useState("");
@@ -232,11 +232,9 @@ export const Profile = () => {
                 onClick={() => {
                   dispatch(
                     addSearch({
-                      location: `| ${rooms
-                        .filter((z) => z.roomID == sched.roomID)
+                      location: `| ${roomses[0].filter((z) => z.roomID == sched.roomID)
                         .map((e) => e.roomName)}`,
-                      buildingID: `${rooms
-                        .filter((z) => z.roomID == sched.roomID)
+                      buildingID: `${roomses[0].filter((z) => z.roomID == sched.roomID)
                         .map((e) => e.buildingNumber)}`,
                       room: sched.title,
                       floor: sched.date,
@@ -253,8 +251,7 @@ export const Profile = () => {
               >
                 <div className="room-con ">
                   <div className="stop">
-                    {rooms
-                      .filter((z) => z.roomID == sched.roomID)
+                    {roomses[0].filter((z) => z.roomID == sched.roomID)
                       .map((e) => e.roomName)}
                   </div>
 

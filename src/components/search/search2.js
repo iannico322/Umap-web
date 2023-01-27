@@ -1,17 +1,10 @@
 import React,{useState} from 'react'
 
-
-import {rooms} from "./rooms"
+import { useSelector  } from 'react-redux';
+import { rooms } from '../../cache/umapRoom';
 import "./search.css"
 export const Search2 = (props) => {
-  
-
-
-
-        
-      
- 
-        
+        const roomses = useSelector(rooms)
         const [query2, setQuery2] = useState(''); // state to hold the search query2
         const [suggestions2, setSuggestions2] = useState([]); // state to hold the suggestions2
         const [originalSearchTerm2, setoriginalSearchTerm2] = useState(''); // state to hold the temporary query2 when hovering over a suggestion
@@ -29,7 +22,7 @@ export const Search2 = (props) => {
       
           setQuery2(searchTerm2.toLowerCase());
           setoriginalSearchTerm2(searchTerm2.toLowerCase()); // update the search query2
-          const suggestions2 = rooms.filter(word => word.roomName.toLowerCase().startsWith(query2) ||word.roomName.toLowerCase().includes(query2) ); // filter the words that match the query2
+          const suggestions2 = roomses[0].filter(word => word.roomName.toLowerCase().startsWith(query2) ||word.roomName.toLowerCase().includes(query2) ); // filter the words that match the query2
           
           setSuggestions2(suggestions2.slice(0, 10)); // update the suggestions2 state with the top 5 matching words
           
@@ -78,7 +71,7 @@ export const Search2 = (props) => {
                   key={suggestion.roomID}
                   onClick={() => {
                     selectSuggestion(suggestion.roomName)
-                    props.onDistination(suggestion.roomID)
+                    props.onDistination(`${suggestion.roomID}`)
                     }}
                   onMouseOver={() => handleHover(suggestion.roomName)}
                   onMouseOut={handleHoverOut}
