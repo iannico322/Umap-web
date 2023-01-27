@@ -4,7 +4,7 @@ import EventImage from './../../media/image/sched-pic.png'
 import LocIcon from './../../media/image/point.png'
 export const Card2 = (props) => {
   return (
-    <div className='card-container'   onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>
+    <div className='card-container'    onMouseOver={props.onMouseOver} onMouseOut={props.onMouseOut}>
         
         <div className="card-box"  >
             <img src={EventImage} alt="" />

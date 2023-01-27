@@ -4,14 +4,18 @@ import Ex from "../../media/image/x-icon.svg"
 import {rooms} from "./rooms"
 import axios from 'axios'
 import "./search.css"
-import { useSelector } from 'react-redux';
+import {  useDispatch,useSelector  } from 'react-redux';
 import {
   users,
 } from './../../cache/userCredentials';
+import { searchs } from '../../cache/userSearch'
+import { addSearch } from '../../cache/userSearch'
 
 
 const displayTime = () => {
+  
 
+  
   const currentTime = new Date();
   const hours = currentTime.getHours();
   const minutes = currentTime.getMinutes();
@@ -30,7 +34,7 @@ const displayTime = () => {
  
 const SearchLog = (text,userid)=>{
   
-  
+    
     const url = 'http://localhost/umap-server/searchlog.php';
     let fData = new FormData();
     fData.append('searchtext', text);
@@ -44,7 +48,11 @@ const SearchLog = (text,userid)=>{
 
 export const Search = (props) => {
         let x = true;
+        const dispatch = useDispatch();
         const credentials = useSelector(users);
+        const searches = useSelector(searchs);
+        // const searchs = useSelector((state)=>state.search.value)
+
         const [query, setQuery] = useState(''); // state to hold the search query
         const [suggestions, setSuggestions] = useState([]); // state to hold the suggestions
         const [originalSearchTerm, setoriginalSearchTerm] = useState(''); // state to hold the temporary query when hovering over a suggestion
@@ -55,11 +63,11 @@ export const Search = (props) => {
         
         if (searchTerm === ""){
             listS.add("hideList")
-            props.onBuilding("")
+            
         }else{
             listS.remove("hideList")
         }
-        props.onBuilding(searchTerm)
+          
           setQuery(searchTerm.toLowerCase());
           setoriginalSearchTerm(searchTerm.toLowerCase()); // update the search query
           const suggestions = rooms.filter(word => word.roomName.toLowerCase().startsWith(query) ||word.roomName.toLowerCase().includes(query) ); // filter the words that match the query
@@ -78,10 +86,13 @@ export const Search = (props) => {
         };
       
         const handleHoverOut = () => {
-                  props.onBuilding("")
-                    props.onRoom("")
-                    props.onFloor("")
-                    props.onBlock("")
+          dispatch(addSearch({
+            "location":"",
+            "buildingID":"",
+            "room": "",
+            "floor": "",
+            "block": "",
+          }))
             setQuery(originalSearchTerm); // clear the temporary query
         };
 
@@ -101,10 +112,13 @@ export const Search = (props) => {
                       if(icon === Ex){
                         setQuery("")
                         seticon(Magnifying)
-                        props.onBuilding("")
-                        props.onRoom("")
-                        props.onFloor("")
-                        props.onBlock("")
+                        dispatch(addSearch({
+                          "location":"",
+                          "buildingID":"",
+                          "room": "",
+                          "floor": "",
+                          "block": "",
+                        }))
                         x = false
                       }else{
                         
@@ -129,21 +143,27 @@ export const Search = (props) => {
                   key={suggestion.roomID}
                   onClick={() => {selectSuggestion(suggestion.roomName)
                     seticon(Ex)
-                    props.onBuilding(suggestion.buildingNumber)
-                    props.onRoom(suggestion.roomName)
-                    props.onFloor(`F ${suggestion.floorNumber}`)
-                    props.onBlock(`B ${suggestion.blockNumber}`)
-                    props.onLoc("")
-                    SearchLog(suggestion.roomName,props.userID)
 
+
+                    dispatch(addSearch({
+                      "location":"",
+                      "buildingID":suggestion.buildingNumber,
+                      "room": suggestion.roomName,
+                      "floor":`F ${suggestion.floorNumber}`,
+                      "block":`B ${suggestion.blockNumber}`,
+                    }))
+                   
+                    SearchLog(suggestion.roomName,credentials[0])
+                    console.log(searches.buildingID,searches.room,searches.location)
                     }}
                   onMouseOver={() => {handleHover(suggestion.roomName)
-                  
-                    props.onBuilding(suggestion.buildingNumber)
-                    props.onRoom(suggestion.roomName)
-                    props.onFloor(`F ${suggestion.floorNumber}`)
-                    props.onBlock(`B ${suggestion.blockNumber}`)
-                    props.onLoc("")
+                    dispatch(addSearch({
+                      "location":"",
+                      "buildingID":suggestion.buildingNumber,
+                      "room": suggestion.roomName,
+                      "floor":`F ${suggestion.floorNumber}`,
+                      "block":`B ${suggestion.blockNumber}`,
+                    }))
                   
                   }
                   

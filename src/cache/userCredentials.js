@@ -16,7 +16,6 @@ export const userCredentials = createSlice({
 })
 
 export const { logout, addCredentials } = userCredentials.actions
-
 export const users = (state) => state.user.value
 
 export default userCredentials.reducer

@@ -7,14 +7,16 @@ import "./profile.css";
 import { Search2 } from "../../components/search/search2";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
-
+import { searchs, addSearch } from "../../cache/userSearch";
 import { rooms } from "../../components/search/rooms";
 
 export const Profile = () => {
-
+  const dispatch = useDispatch();
   const credentials = useSelector(users);
+  const searches = useSelector(searchs);
+
   const [room, setRoom] = useState("");
 
   const [title, setTitle] = useState("");
@@ -27,19 +29,13 @@ export const Profile = () => {
 
   useEffect(() => {
     if (credentials[0] === undefined) {
-  
       document.querySelector(".login").click();
     } else {
       // settimer(1000)
       // setInterval(displayDateTime,timer );
     }
 
-
     getScheduleForProfile();
-    
-
-
-
   }, []);
 
   function getScheduleForProfile() {
@@ -52,7 +48,6 @@ export const Profile = () => {
         if (response.data === "NoSchedules") {
         } else {
           setSchedules(response.data);
-          
         }
       });
   }
@@ -89,8 +84,8 @@ export const Profile = () => {
     setRoom(newQuery); // update the search query with the new value
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(sched) {
+    sched.preventDefault();
     const url = "http://localhost/umap-server/schedule.php";
 
     let fData = new FormData();
@@ -118,7 +113,6 @@ export const Profile = () => {
       .catch((error) => alert(error));
   }
 
-  
   return (
     <>
       <div className="schedule-container">
@@ -163,7 +157,9 @@ export const Profile = () => {
                   setDate(e.target.value);
                 }}
               >
-                <option value="MON" selected>MON</option>
+                <option value="MON" selected>
+                  MON
+                </option>
                 <option value="TUE">TUE</option>
                 <option value="WED">WED</option>
                 <option value="THU">THU</option>
@@ -209,8 +205,6 @@ export const Profile = () => {
         </div>
       </div>
 
-
-
       <div className="profile-container  animate__animated  animate__bounceInLeft">
         <Navbar2 profile="selected" />
 
@@ -232,27 +226,51 @@ export const Profile = () => {
             >
               <img src={Plus} alt="Plus-icon" />
             </div>
-            {schedules.map((event, key) => (
-              <div className="card">
+            {schedules.map((sched, key) => (
+              <div
+                className="card"
+                onClick={() => {
+                  dispatch(
+                    addSearch({
+                      location: `| ${rooms
+                        .filter((z) => z.roomID == sched.roomID)
+                        .map((e) => e.roomName)}`,
+                      buildingID: `${rooms
+                        .filter((z) => z.roomID == sched.roomID)
+                        .map((e) => e.buildingNumber)}`,
+                      room: sched.title,
+                      floor: sched.date,
+                      block: sched.time,
+                    })
+                  );
+
+                  console.log(searches, "Asdasd");
+                  document.querySelector(".main").click();
+                }}
+                onMouseOver={() => {
+                  console.log(searches, "Asdasd");
+                }}
+              >
                 <div className="room-con ">
                   <div className="stop">
                     {rooms
-                      .filter((z) => z.roomID == event.roomID)
+                      .filter((z) => z.roomID == sched.roomID)
                       .map((e) => e.roomName)}
                   </div>
 
-                  <div className="sbottom "> {event.title}</div>
+                  <div className="sbottom "> {sched.title}</div>
                 </div>
 
                 <div className="date-con">
-                  <div className="date">{event.date}</div>
-                  <div className="time">{event.time}</div>
+                  <div className="date">{sched.date}</div>
+                  <div className="time">{sched.time}</div>
                 </div>
               </div>
             ))}
           </div>
         </div>
         <Link to="/umap" className="login"></Link>
+        <Link to="main" className="main"></Link>
       </div>
     </>
   );

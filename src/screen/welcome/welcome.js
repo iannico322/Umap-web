@@ -6,13 +6,22 @@ import Map1 from "./../../media/image/map3d_1.png";
 import { Link } from "react-router-dom";
 import { Load } from "../loader/loader";
 import downloadIcon from "../../media/image/download-icon.svg";
+import { useDispatch } from "react-redux";
+import { rooms,addRoom } from "../../cache/umapRoom";
 import "./welcome.css";
 import "animate.css";
 
+
+
 export const Welcome = () => {
+  const dispatch = useDispatch()
   return (
     <>
-      <Load time={3000} />
+   
+
+    <Load time = {3000}/>
+
+      
 
       <div className="welcome-screen ">
         <Navbar
@@ -61,6 +70,7 @@ export const Welcome = () => {
       <Link to="/main" className="main"></Link>
       <Link to="/login" className="Press"></Link>
       <Link to="/guest" className="guest"></Link>
+     
     </>
   );
 };

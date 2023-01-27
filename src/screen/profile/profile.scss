@@ -251,6 +251,7 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
             .card{
+                cursor: pointer;
                 height: 15rem;
                 background-color: #D9D9D9;
                 width: 20rem;
@@ -259,7 +260,11 @@
                 align-items: center;
                 flex-direction: column;
                 flex-wrap: wrap;
-
+                transition: 100ms ease-in-out;
+                &:hover{
+                    transition: 100ms ease-in-out;
+                    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                }
                 .room-con{
                     height: 70%;
                     overflow: hidden;
