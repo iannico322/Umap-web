@@ -80,7 +80,7 @@ function MainDasboard() {
       document.querySelector(".login").click();
     } else {
       settimer(9000)
-      setInterval(displayDateTime,timer );
+      // setInterval(displayDateTime,timer );
     }
     
     
@@ -90,8 +90,6 @@ function MainDasboard() {
     axios
       .get("http://localhost/umap-server/getEventsToCalendar.php")
       .then(function (response) {
-        console.log(response.data)
-        console.log(searches)
         setEvents(response.data);
       });
   }

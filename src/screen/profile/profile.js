@@ -204,13 +204,9 @@ export const Profile = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
 
       {/* //profile screen z-index 1 */}
      <div className="profile-container  animate__animated  animate__bounceInLeft">
-=======
-      <div className="profile-container  animate__animated  animate__bounceInLeft">
->>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
         <Navbar2 profile="selected" />
 
         <div className="profile-background">
