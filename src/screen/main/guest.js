@@ -22,39 +22,15 @@ import { Load } from "../loader/loader";
 import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { searchs,addSearch } from "../../cache/userSearch";
-
+import { SearchOffline } from "../../components/search/searchForOffline";
 function Guest() {
-  const [buildingSearch, setBuildingSearch] = useState("");
-  const [roomSearch, setRoomSearch] = useState("");
 
-  const [roomfloor, setRoomfloor] = useState("");
-  const [roomblock, setRoomblock] = useState("");
+  const searches = useSelector(searchs);
+
   const [mapzoom, setmapzoom] = useState(40);
   const [loc, setloc] = useState("");
 
-  const updateQueryBuilding = (newQuery) => {
-    console.log("itworks");
-    setBuildingSearch(newQuery); // update the search query with the new value
-  };
 
-  const updateQueryRoom = (newQuery) => {
-    console.log("itworks3");
-    setRoomSearch(newQuery); // update the search query with the new value
-  };
-
-  const updateQueryFloor = (newQuery) => {
-    console.log(newQuery);
-    setRoomfloor(newQuery); // update the search query with the new value
-  };
-
-  const updateQueryBlock = (newQuery) => {
-    console.log(newQuery);
-    setRoomblock(newQuery); // update the search query with the new value
-  };
-  const updateLoc = (newQuery) => {
-    console.log(newQuery);
-    setloc(newQuery);
-  };
 
   const [loading, setLoading] = useState("");
 
@@ -88,12 +64,8 @@ function Guest() {
           <Navbar3 />
 
           <div className="search">
-            <Search
-              onBuilding={updateQueryBuilding}
-              onRoom={updateQueryRoom}
-              onFloor={updateQueryFloor}
-              onBlock={updateQueryBlock}
-              onLoc={updateLoc}
+            <SearchOffline 
+              
               userID="69"
             />
           </div>
@@ -123,7 +95,7 @@ function Guest() {
           </div>
 
           <Canvas>
-            <Suspense fallback={null}>
+            
               <Environment
                 files={process.env.PUBLIC_URL + "/textures/light.hdr"}
               />
@@ -146,15 +118,21 @@ function Guest() {
                 floatIntensity={0.6}
               >
                 <Cloud />
+                <Suspense fallback={<>Loading</>}>
+
+                
                 <Map />
+                </Suspense>
                 <Location
-                  search={buildingSearch}
-                  roomSearch={roomSearch}
-                  floor={roomfloor}
-                  block={roomblock}
+                 loc= {searches.location}
+                 search= {searches.buildingID}
+                 roomSearch = {searches.room}
+                 floor = {searches.floor}
+                 block = {searches.block}
+
                 />
               </Float>
-            </Suspense>
+         
           </Canvas>
         </div>
       </div>
