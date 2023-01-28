@@ -67,8 +67,7 @@ function MainDasboard() {
   setTimeout(() => {
     const currentDay = new Date().getDay();
     setTodayDay(['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'][currentDay]);
-    console.log(todayDay)
-  }, );
+  }, 1000);
 
  
   
@@ -82,11 +81,11 @@ function MainDasboard() {
       document.querySelector(".login").click();
     } else {
       settimer(9000)
-      // setInterval(displayDateTime,timer );
+      setInterval(displayDateTime,timer );
     }
     
     
-  }, []);
+  });
 
   function getEvent() {
     axios
@@ -112,7 +111,7 @@ function MainDasboard() {
 
   return (
     <>
-      {/* <Load time={5000} /> */}
+      <Load time={1000} />
       
       <div className="main-screen  ">
         <div className="page">

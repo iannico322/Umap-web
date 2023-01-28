@@ -34,6 +34,7 @@ export const Welcome = () => {
       .get("http://localhost/umap-server/getRooms.php")
       .then(function (response) {
         dispatch(addRoom([response.data]))
+      
           // console.log(roomses[0].filter(e=>e.buildingNumber == 9).map(e=>e.roomName))
           
       });

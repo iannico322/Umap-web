@@ -8,14 +8,10 @@ import {  useDispatch,useSelector  } from 'react-redux';
 import {
   users,
 } from './../../cache/userCredentials';
-import { searchs } from '../../cache/userSearch'
-import { addSearch } from '../../cache/userSearch'
-import { rooms } from '../../cache/umapRoom'
+import { searchs,addSearch } from '../../cache/userSearch'
+import { rooms} from '../../cache/umapRoom'
 
 const displayTime = () => {
-  
- 
-  
   const currentTime = new Date();
   const hours = currentTime.getHours();
   const minutes = currentTime.getMinutes();
@@ -139,9 +135,9 @@ export const Search = (props) => {
       
                  
               <ul className='suggestion-list hideList'>
-                {suggestions.map(suggestion => (
+                {suggestions.map((suggestion,key) => (
                   <li
-                  key={suggestion.roomID}
+                  key={key}
                   onClick={() => {selectSuggestion(suggestion.roomName)
                     seticon(Ex)
 
@@ -155,7 +151,7 @@ export const Search = (props) => {
                     }))
                    
                     SearchLog(suggestion.roomName,credentials[0])
-                    console.log(searches.buildingID,searches.room,searches.location)
+                    console.log(searches)
                     }}
                   onMouseOver={() => {handleHover(suggestion.roomName)
                     dispatch(addSearch({

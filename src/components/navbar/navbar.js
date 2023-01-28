@@ -37,7 +37,7 @@ export const Navbar = (props) => {
               /> {props.link2}</li> 
 
             <Link to={props.link1Address} className="Press"></Link>
-            {/* <a href="#" className='download' download={Download}></a> */}
+            <a href="https://drive.google.com/file/d/1cG4m8AItIobIVKetZP6irLuy5yDwc7a8/view?usp=share_link" target="_blank" className='download' ></a>
             
         </ul>
 

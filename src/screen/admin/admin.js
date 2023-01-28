@@ -16,6 +16,8 @@ export const Admin = ({navigation}) => {
 
   const roomses = useSelector(rooms)
   const [room, setRoom] = useState("");
+  const [roomIDs, setroomIDs] = useState(["",""]);
+
 
   const [title, setTitle] = useState("");
   const [clicked, setclicked] = useState(true);
@@ -418,8 +420,6 @@ export const Admin = ({navigation}) => {
                     <div className="card-admin ">
                       <div className="room-con-admin ">
                         <div className="stop">{event.title}</div>
-                        {console.log("hi")}
-
                         <div className="sbottom ">
                           {" "}
                           {roomses[0]
@@ -548,6 +548,7 @@ export const Admin = ({navigation}) => {
                 className={`${RoomGUI[0]} table3 `}
                 style={{ flexDirection: "column" }}
               >
+                <h2 style={{margin:0,color:"#FDB417"}}>{`${roomIDs[0] } ${roomIDs[1] }`}</h2>
                 <table>
                   <thead>
                     <tr>
@@ -560,7 +561,7 @@ export const Admin = ({navigation}) => {
                     </tr>
                   </thead>
                   <tbody>
-                  
+                    
                     <tr>
                       <td>
                         <input type="text" value={roomName} onChange={
@@ -623,6 +624,61 @@ export const Admin = ({navigation}) => {
                         >
                           Add
                         </button>
+
+
+                        <button
+                          class="button-6"
+                          role="button"
+                          onClick={() => {
+                            
+                              const url = "http://localhost/umap-server/updateRoom.php";
+                              
+                              if(roomIDs[1]!=""){
+                                  let fData = new FormData();
+                                  fData.append("roomID",roomIDs[1])
+                                  fData.append("roomName", `${roomName}`);
+                                  fData.append("buildingNumber", `${buildingNumber}`);
+                                  fData.append("floorNumber", `${floorNumber}`);
+                                  fData.append("blockNumber", `${blockNumber}`);
+                                  fData.append("roomType", `${roomType}`);
+                                  axios
+                                    .post(url, fData).then(()=>{
+                                      setroomName("")
+                                      setbuildingNumber("")
+                                      setfloorNumber("")
+                                      setblockNumber("")
+                                      setroomType("")
+                                      setroomIDs( ["", ""])
+                                      window.location.reload();
+                                    })
+                              }else{
+                                alert("Please Select a room to update!")
+                              }
+                          }}
+                        >
+                          Update
+                        </button>
+
+
+                        <button
+                          class="button-6"
+                          role="button"
+                          onClick={() => {
+                            
+                           
+                                  
+                               
+                                  setroomName("")
+                                  setbuildingNumber("")
+                                  setfloorNumber("")
+                                  setblockNumber("")
+                                  setroomType("")
+                                  setroomIDs( ["", ""])
+                                
+                          }}
+                        >
+                          Clear
+                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -654,7 +710,13 @@ export const Admin = ({navigation}) => {
                             class="button-6"
                             role="button"
                             onClick={() => {
-                              console.log("edit")
+                              setroomIDs( ["Editing room:", room.roomID])
+
+                              setroomName(room.roomName)
+                              setbuildingNumber(room.buildingNumber)
+                              setfloorNumber(room.floorNumber)
+                              setblockNumber(room.blockNumber)
+                              setroomType(room.roomType)
                             }}
                           >
                             Edit
