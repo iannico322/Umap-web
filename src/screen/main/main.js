@@ -80,7 +80,7 @@ function MainDasboard() {
       document.querySelector(".login").click();
     } else {
       settimer(9000)
-      // setInterval(displayDateTime,timer );
+      setInterval(displayDateTime,timer );
     }
     
     
