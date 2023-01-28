@@ -3,8 +3,7 @@ import {
   OrbitControls,
   PerspectiveCamera,
   Environment,
-  Float,
-} from "@react-three/drei";
+  Float,} from "@react-three/drei";
 import { Suspense, useState, useEffect } from "react";
 import { Map } from "./Map";
 import { Navbar2 } from "../../components/navbar/navbar2";
