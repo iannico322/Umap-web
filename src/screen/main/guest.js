@@ -11,7 +11,7 @@ import { Navbar3 } from "../../components/navbar/navbar3";
 import { Location } from "./Location";
 
 import Map2d from "./../../media/image/2dmapc.jpg";
-import Draggable from "react-draggable";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Cloud1 from "./../../media/image/cloud_2-big.png";
 import "./main.css";
 
@@ -67,9 +67,11 @@ function Guest() {
               </div>
             </div>
             <div className="map2d-con">
-              <Draggable>
-                <img src={Map2d} alt="" />
-              </Draggable>
+            <TransformWrapper>
+                <TransformComponent>
+                  <img src={Map2d} alt="" />
+                </TransformComponent>
+              </TransformWrapper>
             </div>
           </div>
 
