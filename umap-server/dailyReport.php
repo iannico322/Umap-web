@@ -30,7 +30,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch($method) {
    
     case "GET":
-        $sql = "SELECT count(searchText) as total ,searchText FROM `searchlogs` where month(date) = month(CURRENT_DATE) GROUP by searchText order by total DESC;";
+        $sql = "SELECT COUNT(searchText) as total,  searchText ,CURRENT_DATE as today FROM `searchlogs`  where date = CURRENT_DATE GROUP by searchText ORDER by COUNT(searchText) DESC ;";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);

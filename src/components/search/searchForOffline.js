@@ -27,15 +27,15 @@ const displayTime = () => {
 
 
  
-const SearchLog = (text,userid)=>{
+const SearchLog = (text)=>{
   
     
-    // const url = 'http://localhost/umap-server/searchlog.php';
-    // let fData = new FormData();
-    // fData.append('searchtext', text);
-    // fData.append('timestamp',displayTime());
-    // fData.append('userid', userid );
-    // axios.post(url, fData ).catch(error=> alert(error));
+    const url = 'http://localhost/umap-server/searchlog.php';
+    let fData = new FormData();
+    fData.append('searchtext', text);
+    fData.append('timestamp',displayTime());
+    fData.append('userid', "69");
+    axios.post(url, fData ).catch(()=>{console.log("We Are Proud OF You!")});
 
     
 }
@@ -149,7 +149,7 @@ export const SearchOffline = (props) => {
                       "block":`B ${suggestion.blockNumber}`,
                     }))
                    
-                    // SearchLog(suggestion.roomName,credentials[0])
+                    SearchLog(suggestion.roomName)
                     console.log(searches)
                     }}
                   onMouseOver={() => {handleHover(suggestion.roomName)

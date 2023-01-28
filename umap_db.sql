@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 20, 2023 at 04:19 PM
+-- Generation Time: Jan 28, 2023 at 08:18 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -78,7 +78,12 @@ INSERT INTO `events` (`eventID`, `locationID`, `title`, `time`, `date`, `descrip
 (1, '2 ', 'dasd', '4:27pm - 5:26am ', '2023-01-19', 'blablabla'),
 (2, '97 ', 'Mag Hunting Og chicks by Kyle', '4:35am - 6:35pm ', '2023-01-17', 'blablabla'),
 (3, '83 ', 'Graduation', '7:44am - 7:44am ', '2023-01-20', 'blablabla'),
-(4, '4 ', 'MAligo', '7:41pm - 7:40pm ', '2023-01-21', 'blablabla');
+(4, '4 ', 'MAligo', '7:41pm - 7:40pm ', '2023-01-21', 'blablabla'),
+(5, '52 ', 'Defense sa mga Gwapo/Gwapa', '1:03pm - 3:57pm ', '2023-01-21', 'blablabla'),
+(6, '10 ', 'Defense', '3:51pm - 3:50am ', '2023-01-23', 'blablabla'),
+(8, '6 ', 'asd', '4:43pm - 4:43pm ', '2023-01-28', 'blablabla'),
+(9, '95 ', 'MAtug', '7:23am - 7:23am ', '2023-01-28', 'blablabla'),
+(10, '4 ', 'mah sssdsd', '10:23pm - 9:23pm ', '2023-01-28', 'blablabla');
 
 -- --------------------------------------------------------
 
@@ -100,7 +105,7 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`roomID`, `buildingNumber`, `roomName`, `blockNumber`, `roomType`, `floorNumber`) VALUES
-(1, 3, 'Integrated Technology Building', 1, 'building', NULL),
+(1, 3, 'Integrated Technology Building', 0, 'building', 0),
 (2, 3, 'Advanced Mechatronics Lab', 2, 'lab', 1),
 (3, 3, 'Automation, Instrumentation, and Process Cont', 3, 'lab', 1),
 (4, 3, 'Faculty Office (EMT/ECT)', 4, 'office', 1),
@@ -261,7 +266,10 @@ INSERT INTO `rooms` (`roomID`, `buildingNumber`, `roomName`, `blockNumber`, `roo
 (159, 41, 'Faculty Office (IT Dept) - Science Complex', 1, 'office', 4),
 (160, 41, 'CDO BITES (Business Incubation Technology Entrepreneurship and Startups) - Science Complex', 1, NULL, 4),
 (162, 20, 'Cafeteria', 1, 'food', 1),
-(163, 20, 'Canteen', 1, 'food', 1);
+(163, 20, 'Canteen', 1, 'food', 1),
+(164, 36, 'Old student Center', 1, 'building', 1),
+(167, 3, 'Room Ni Nico', 0, 'lab', 2),
+(168, 9, 'room Sa Mga Gwapo', 1, 'room', 1);
 
 -- --------------------------------------------------------
 
@@ -303,7 +311,19 @@ INSERT INTO `schedules` (`scheduleID`, `userID`, `roomID`, `title`, `time`, `dat
 (20, 60, 1, 'asad', '10:51pm - 10:51pm ', 'WED', 'blabla'),
 (21, 60, 1, 'asad', '10:51pm - 10:51pm ', 'WED', 'blabla'),
 (22, 60, 11, 'asd', '10:53pm - 11:52am ', 'TUE', 'blabla'),
-(23, 60, 11, 'asd', '10:54pm - 11:53pm ', 'TUE', 'blabla');
+(23, 60, 11, 'asd', '10:54pm - 11:53pm ', 'TUE', 'blabla'),
+(24, 59, 7, 'Maligo', '9:20am - 12:18am ', 'SAT', 'blabla'),
+(25, 78, 4, 'Maligo', '1:02pm - 1:03am ', 'SAT', 'blabla'),
+(26, 78, 3, 'gfg', '1:01pm - 1:02pm ', 'MON', 'blabla'),
+(27, 60, 2, 'DSAD', '3:07pm - 4:07am ', 'SAT', 'blabla'),
+(28, 80, 0, 'asd', '7:22pm - 10:22pm ', 'MON', 'blabla'),
+(29, 60, 13, 'Class', '7:00am - 9:00pm ', 'SAT', 'blabla'),
+(30, 63, 97, 'Mang Chicks', '4:52pm - 4:53pm ', 'FRI', 'blabla'),
+(31, 63, 33, 'asd', '5:07pm - 6:06pm ', 'TUE', 'blabla'),
+(32, 62, 5, 'mag ask sa grades', '7:30pm - 7:30am ', 'SAT', 'blabla'),
+(33, 62, 52, 'Mag defense', '8:37am - 8:36am ', 'SAT', 'blabla'),
+(34, 2, 95, 'Mang chicks', '8:29am - 8:29am ', 'SAT', 'blabla'),
+(35, 62, 3, 'Ambot asa', '1:01am - 2:01pm ', 'SAT', 'blabla');
 
 -- --------------------------------------------------------
 
@@ -316,7 +336,7 @@ CREATE TABLE `searchlogs` (
   `userID` varchar(100) DEFAULT NULL,
   `searchText` varchar(255) DEFAULT NULL,
   `timeStamp` varchar(100) DEFAULT NULL,
-  `date` varchar(100) DEFAULT NULL
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -324,59 +344,120 @@ CREATE TABLE `searchlogs` (
 --
 
 INSERT INTO `searchlogs` (`searchID`, `userID`, `searchText`, `timeStamp`, `date`) VALUES
-(1, '$userID', '$searchtext', '$timestamp', '$date'),
-(2, 'nico', 'Basic Electrical and Electronics Circuits Lab', '11:44am', 'January-17-2023'),
-(3, 'nico', 'Office of the CIIT Dean', '11:45am', 'January-17-2023'),
-(4, 'nico', 'Advanced Mechatronics Lab', '11:48am', 'January-17-2023'),
-(5, 'nico', 'Faculty Office (EMT-ECT)', '11:49am', 'January-17-2023'),
-(6, 'nico', 'Audio Visual Room (AVR)', '11:52am', 'January-17-2023'),
-(7, '63', 'EPAS NC2 Lecture Area', '11:53am', 'January-17-2023'),
-(8, '63', 'Library', '11:54am', 'January-17-2023'),
-(9, '60', 'Audio Visual Room (AVR)', '12:09pm', 'January-17-2023'),
-(10, 'undefined', 'Infrastructure Planning and Facilities Development Office- CITC Building', '1:58pm', 'January-17-2023'),
-(11, 'undefined', '21st Century Classroom', '3:34pm', 'January-17-2023'),
-(12, '70', 'Office of the CIIT Dean', '4:50pm', 'January-17-2023'),
-(13, '', '', '', ''),
-(14, '70', 'Office of the CIIT Dean', '5:53pm', 'January-17-2023'),
-(15, '', '', '', ''),
-(16, '70', 'CITC Building', '5:53pm', 'January-17-2023'),
-(17, 'undefined', '21st Century Classroom', '11:37pm', 'January-17-2023'),
-(18, 'undefined', 'Audio Visual Room (AVR)', '12:10am', 'January-18-2023'),
-(19, '61', 'Advanced Mechatronics Lab', '12:12am', 'January-18-2023'),
-(20, '62', 'Faculty Office (EMT-ECT)', '12:15am', 'January-18-2023'),
-(21, 'undefined', 'Office of the CIIT Dean', '12:17am', 'January-18-2023'),
-(22, 'undefined', 'Faculty Office (EMT-ECT)', '12:17am', 'January-18-2023'),
-(23, '60', 'Faculty Office (EMT-ECT)', '10:12am', 'January-18-2023'),
-(24, '60', 'Library', '10:13am', 'January-18-2023'),
-(25, '60', 'Library', '10:16am', 'January-18-2023'),
-(26, '60', '21st Century Classroom', '10:19am', 'January-18-2023'),
-(27, '60', 'Computer Lab 206 - CITC Building', '10:19am', 'January-18-2023'),
-(28, '60', 'CIIT Accreditation Center', '11:13am', 'January-18-2023'),
-(29, '60', 'Faculty Office (EMT-ECT)', '11:13am', 'January-18-2023'),
-(30, '60', '21st Century Classroom', '11:21am', 'January-18-2023'),
-(31, '60', 'Audio Visual Room (AVR)', '11:24am', 'January-18-2023'),
-(32, '60', 'Faculty Office (EMT-ECT)', '12:29pm', 'January-18-2023'),
-(33, '59', 'Faculty Office (EMT-ECT)', '2:51pm', 'January-18-2023'),
-(34, '60', 'Faculty Office (EMT-ECT)', '8:48pm', 'January-18-2023'),
-(35, '60', 'Multimedia Lab 2 - CITC Building', '8:48pm', 'January-18-2023'),
-(36, '60', 'Office of the CIIT Dean', '2:56pm', 'January-19-2023'),
-(37, '59', '21st Century Classroom', '4:13pm', 'January-19-2023'),
-(38, '61', 'Integrated Technology Building', '12:46pm', 'January-20-2023'),
-(39, '61', 'E-Library', '12:46pm', 'January-20-2023'),
-(40, '60', 'Library', '1:08pm', 'January-20-2023'),
-(41, '60', 'E-Library', '3:10pm', 'January-20-2023'),
-(42, '60', 'Dept. of Technology Communication Management Office', '3:57pm', 'January-20-2023'),
-(43, '60', 'CITC Building', '3:58pm', 'January-20-2023'),
-(44, '60', 'Cafeteria', '4:30pm', 'January-20-2023'),
-(45, '60', 'Canteen', '4:30pm', 'January-20-2023'),
-(46, '60', 'Faculty Office (EMT ECT)', '5:54pm', 'January-20-2023'),
-(47, '74', 'Canteen', '7:02pm', 'January-20-2023'),
-(48, '74', 'CITC Building', '7:02pm', 'January-20-2023'),
-(49, '60', 'Office of the CIIT Dean', '8:59pm', 'January-20-2023'),
-(50, '60', 'Temporary Extension Storage Room 2 - Old Engineering Building', '9:00pm', 'January-20-2023'),
-(51, '60', 'Library', '10:01pm', 'January-20-2023'),
-(52, '60', 'Library', '10:05pm', 'January-20-2023'),
-(53, '60', 'Library', '10:05pm', 'January-20-2023');
+(1, '2', 'Automation, Instrumentation, and Process Cont', '8:10am', '2023-01-21'),
+(2, '59', 'Faculty Office (EMT ECT)', '9:11am', '2023-01-21'),
+(3, '59', 'Faculty Office (EMT ECT)', '9:14am', '2023-01-21'),
+(4, '69', 'Automation, Instrumentation, and Process Cont', '9:16am', '2023-01-21'),
+(5, '59', 'CIIT Accreditation Center', '9:16am', '2023-01-21'),
+(6, '60', 'Audio Visual Room (AVR)', '10:36am', '2023-01-21'),
+(7, '60', 'Library', '10:39am', '2023-01-21'),
+(8, '60', 'Library', '10:40am', '2023-01-21'),
+(9, '60', 'E-Library', '10:41am', '2023-01-21'),
+(10, '60', 'Library', '10:41am', '2023-01-21'),
+(11, '60', 'Library', '10:42am', '2023-01-21'),
+(12, '60', 'E-Library', '10:42am', '2023-01-21'),
+(13, '60', 'E-Library', '10:43am', '2023-01-21'),
+(14, '60', 'Library', '10:44am', '2023-01-21'),
+(15, '60', 'CITC Building', '10:44am', '2023-01-21'),
+(16, '60', 'E-Library', '10:48am', '2023-01-21'),
+(17, '60', 'CITC Building', '10:48am', '2023-01-21'),
+(18, '60', 'E-Library', '10:49am', '2023-01-21'),
+(19, '60', 'Old Science Building', '10:50am', '2023-01-21'),
+(20, '60', 'Gym', '10:50am', '2023-01-21'),
+(21, '60', 'Gym', '10:51am', '2023-01-21'),
+(22, '60', 'E-Library', '10:51am', '2023-01-21'),
+(23, '60', 'Library', '10:52am', '2023-01-21'),
+(24, '60', 'E-Library', '10:52am', '2023-01-21'),
+(25, '60', 'E-Library', '10:53am', '2023-01-21'),
+(26, '60', 'CITC Building', '10:53am', '2023-01-21'),
+(27, '60', 'Library', '11:15am', '2023-01-21'),
+(28, '60', 'CITC Building', '11:15am', '2023-01-21'),
+(29, '60', 'Gym', '11:19am', '2023-01-21'),
+(30, '60', 'E-Library', '11:19am', '2023-01-21'),
+(31, '60', 'CITC Building', '11:19am', '2023-01-21'),
+(32, '60', 'CITC Building', '11:20am', '2023-01-21'),
+(33, '60', 'CITC Building', '11:20am', '2023-01-21'),
+(34, '60', 'CITC Building', '11:21am', '2023-01-21'),
+(35, '60', 'CITC Building', '11:21am', '2023-01-21'),
+(36, '60', 'CITC Building', '11:22am', '2023-01-21'),
+(37, '60', 'Library', '11:25am', '2023-01-21'),
+(38, '60', 'CITC Building', '11:28am', '2023-01-21'),
+(39, '60', 'Gym', '11:28am', '2023-01-21'),
+(40, '60', 'Canteen', '11:30am', '2023-01-21'),
+(41, '69', 'Science Complex', '12:41pm', '2023-01-21'),
+(42, '69', 'Old Science Building', '12:42pm', '2023-01-21'),
+(43, '69', 'Science Complex', '12:42pm', '2023-01-21'),
+(44, '69', 'Food Innovation Center', '12:48pm', '2023-01-21'),
+(45, '69', 'Food Trade Building', '12:49pm', '2023-01-21'),
+(46, '69', 'Learning Resource Center (LRC)', '12:50pm', '2023-01-21'),
+(47, '69', 'Science Centrum Building', '12:50pm', '2023-01-21'),
+(48, '69', 'DRER Memorial Hall', '12:50pm', '2023-01-21'),
+(49, '69', 'Finance and Accounting Building', '12:51pm', '2023-01-21'),
+(50, '69', 'CITC Building', '12:52pm', '2023-01-21'),
+(51, '69', 'Old Engineering Building', '12:52pm', '2023-01-21'),
+(52, '69', 'ROTC Building', '12:52pm', '2023-01-21'),
+(53, '69', 'Integrated Technology Building', '12:53pm', '2023-01-21'),
+(54, '69', 'E-Library', '12:54pm', '2023-01-21'),
+(55, '61', 'Center for Artificial Intelligence', '12:56pm', '2023-01-21'),
+(56, '61', 'Faculty Office (EMT ECT)', '12:56pm', '2023-01-21'),
+(57, '78', 'E-Library', '1:02pm', '2023-01-21'),
+(58, '69', 'CITC Building', '3:47pm', '2023-01-21'),
+(59, '69', 'E-Library', '3:32pm', '2023-01-27'),
+(60, '63', '21st Century Classroom', '4:00pm', '2023-01-27'),
+(61, '63', 'Faculty Office (EMT ECT)', '4:04pm', '2023-01-27'),
+(62, '63', 'Faculty Office (EMT ECT)', '4:06pm', '2023-01-27'),
+(63, '63', 'Faculty Office (EMT ECT)', '4:10pm', '2023-01-27'),
+(64, '63', 'Integrated Technology Building', '4:10pm', '2023-01-27'),
+(65, '63', 'Advanced Mechatronics Lab', '4:11pm', '2023-01-27'),
+(66, '63', 'Advanced Mechatronics Lab', '4:11pm', '2023-01-27'),
+(67, '63', 'Automation, Instrumentation, and Process Cont', '4:14pm', '2023-01-27'),
+(68, '63', 'Automation, Instrumentation, and Process Cont', '4:14pm', '2023-01-27'),
+(69, '63', 'Faculty Office (EMT ECT)', '4:17pm', '2023-01-27'),
+(70, '63', 'Advanced Mechatronics Lab', '4:18pm', '2023-01-27'),
+(71, '63', 'Advanced Mechatronics Lab', '4:25pm', '2023-01-27'),
+(72, '63', 'Integrated Technology Building', '4:25pm', '2023-01-27'),
+(73, '63', 'Faculty Office (EMT ECT)', '4:30pm', '2023-01-27'),
+(74, '63', 'Advanced Mechatronics Lab', '4:30pm', '2023-01-27'),
+(75, '63', 'Integrated Technology Building', '4:40pm', '2023-01-27'),
+(76, '63', 'Faculty Office (EMT ECT)', '4:41pm', '2023-01-27'),
+(77, '63', 'Graduates Library', '4:43pm', '2023-01-27'),
+(78, '63', 'E-Library', '4:48pm', '2023-01-27'),
+(79, '63', 'E-Library', '5:12pm', '2023-01-27'),
+(80, '63', 'Audio Visual Room (AVR)', '7:05pm', '2023-01-27'),
+(81, '63', 'E-Library', '7:06pm', '2023-01-27'),
+(82, '63', 'Advanced Mechatronics Lab', '7:07pm', '2023-01-27'),
+(83, '63', 'Automation, Instrumentation, and Process Cont', '7:08pm', '2023-01-27'),
+(84, '63', 'Library', '7:09pm', '2023-01-27'),
+(85, '63', 'Audio Visual Room (AVR)', '7:12pm', '2023-01-27'),
+(86, '63', 'Integrated Technology Building', '7:14pm', '2023-01-27'),
+(87, '63', 'E-Library', '7:14pm', '2023-01-27'),
+(88, '62', 'Advanced Mechatronics Lab', '7:24pm', '2023-01-27'),
+(89, '62', 'E-Library', '6:36am', '2023-01-28'),
+(90, '62', 'Room Sa Gwapo', '7:30am', '2023-01-28'),
+(91, '62', 'CITC Building', '7:55am', '2023-01-28'),
+(92, '62', 'Room Sa Gwapo', '7:57am', '2023-01-28'),
+(93, '2', 'Multimedia Lab 1 - CITC Building', '8:27am', '2023-01-28'),
+(94, '2', 'E-Library', '8:30am', '2023-01-28'),
+(95, '2', 'Room Sa Gwapo', '8:32am', '2023-01-28'),
+(96, '2', 'Faculty Office (EMT/ECT)', '8:37am', '2023-01-28'),
+(97, '2', 'Integrated Technology Building', '8:37am', '2023-01-28'),
+(98, '2', 'Advanced Mechatronics Lab', '8:43am', '2023-01-28'),
+(99, '', '', '', '2023-01-28'),
+(100, 'undefined', 'Office of the CIIT Dean', '8:51am', '2023-01-28'),
+(101, '', '', '', '2023-01-28'),
+(102, '62', 'Canteen', '10:36am', '2023-01-28'),
+(103, '62', 'Old Science Building', '10:57am', '2023-01-28'),
+(104, '62', 'Room Ni Nico', '11:51am', '2023-01-28'),
+(105, 'undefined', 'Graduates Library', '11:56am', '2023-01-28'),
+(106, '62', 'Office of the Director for Library and Audio-Visual Services', '12:28pm', '2023-01-28'),
+(107, '62', 'Advanced Electrical and Electronics Circuits ', '12:29pm', '2023-01-28'),
+(108, '62', 'IT Solution Incubation Lab', '12:29pm', '2023-01-28'),
+(109, '62', 'Integrated Technology Building', '12:45pm', '2023-01-28'),
+(110, '62', 'Graduates Library', '12:51pm', '2023-01-28'),
+(111, '62', 'Audio Visual Room (AVR)', '12:51pm', '2023-01-28'),
+(112, '62', 'Faculty Office (EMT/ECT)', '12:51pm', '2023-01-28'),
+(113, '62', 'Data Science Lab - CITC Building', '12:52pm', '2023-01-28'),
+(114, '62', 'room Sa Mga Gwapo', '12:54pm', '2023-01-28');
 
 -- --------------------------------------------------------
 
@@ -409,7 +490,7 @@ INSERT INTO `users` (`ID`, `FullName`, `Email`, `PhoneNum`, `password`, `UserTyp
 (9, 'Tomas Train', 'tomastrain@gmail.com', 2147483647, '4b506c2968184be185f6', 'user'),
 (51, 'ian  asdasd123', 'asdasdasd@asdsad.com', NULL, '5fd924625f6ab16a19cc', 'user'),
 (59, 'nico asd ', '23@gmail.com', NULL, '123', 'user'),
-(60, 'Ian Caulin ', 'nic@g.com', NULL, '123', 'user'),
+(60, 'Ian Caulin ', 'nic@g.com', NULL, '123', 'not-u'),
 (61, 'Cyfrid Gwapo ', 'cyfrid@gmail.com', NULL, '1234', 'user'),
 (62, 'Nicolas Caulin ', 'nicolas@gmail.com', NULL, '123', 'user'),
 (63, 'Ian Caulin ', 'nicolas123@gmail.com', NULL, '123', 'user'),
@@ -418,12 +499,18 @@ INSERT INTO `users` (`ID`, `FullName`, `Email`, `PhoneNum`, `password`, `UserTyp
 (66, 'asd asd ', 'asdasd@asdasd.com', NULL, 'asd', 'user'),
 (67, 'asdLAST 123 ', 'asdasd@asdasd.com', NULL, 'asd', 'user'),
 (68, 'asd asd ', 'asdasd@asdasd.com', NULL, 'asdasd', 'not-u'),
-(69, 'asdd asd ', 'asdasd@asdasd.com', NULL, '@iannico123', 'not-u'),
+(69, 'guest', 'guest', NULL, 'guestguest', 'guest'),
 (70, 'Ian Nico Gwapo ', 'ian@gmail.com', NULL, '@caulin322', 'user'),
 (71, 'asd asd ', 'asdasd@asdasd.com', NULL, '@qwe123', 'not-u'),
 (75, 'Ian Gwapo Caulin ', 'nicolas@gmi.com', NULL, '@qwe123', 'user'),
 (76, 'asd asdasd ', 'asda@asd.com', NULL, '@qwe123', 'not-u'),
-(77, 'asd asdasd ', 'asda@asd.com', NULL, '@qwe123', 'not-u');
+(77, 'asd asdasd ', 'asda@asd.com', NULL, '@qwe123', 'not-u'),
+(78, 'Shk asdasd ', 'li@asd.com', NULL, '@qwe123', 'user'),
+(79, 'herbi maps ', 'herbi@gmail.com', NULL, 'idk@123', 'user'),
+(80, 'qwe rewq ', 'kjhg@gmail.com', NULL, 'asdfg@123', 'user'),
+(81, 'zxc cxz ', 'cxz@gmail.com', NULL, 'cxz@123', 'not-u'),
+(82, 'marc espiritu ', 'marc@gmail.com', NULL, 'asd@123', 'user'),
+(83, 'marc123 espiritu ', 'marc@gmail.com', NULL, '@nico322', 'user');
 
 --
 -- Indexes for dumped tables
@@ -480,31 +567,31 @@ ALTER TABLE `buildings`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `eventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `scheduleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `scheduleID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `searchlogs`
 --
 ALTER TABLE `searchlogs`
-  MODIFY `searchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `searchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- Constraints for dumped tables
