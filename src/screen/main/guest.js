@@ -5,7 +5,7 @@ import {
   Environment,
   Float,
 } from "@react-three/drei";
-import { Suspense, useState, useEffect } from "react";
+import { useState } from "react";
 import { Map } from "./Map";
 import { Navbar3 } from "../../components/navbar/navbar3";
 import { Location } from "./Location";
@@ -14,44 +14,24 @@ import Map2d from "./../../media/image/2dmapc.jpg";
 import Draggable from "react-draggable";
 import Cloud1 from "./../../media/image/cloud_2-big.png";
 import "./main.css";
-import { Cloud } from "./Cloud";
-
-import { Search } from "../../components/search/search";
 
 import { Load } from "../loader/loader";
-import { useSelector, useDispatch } from "react-redux";
-import { users } from "./../../cache/userCredentials";
-import { searchs,addSearch } from "../../cache/userSearch";
+import { useSelector } from "react-redux";
+
+import { searchs } from "../../cache/userSearch";
 import { SearchOffline } from "../../components/search/searchForOffline";
 function Guest() {
 
   const searches = useSelector(searchs);
 
   const [mapzoom, setmapzoom] = useState(40);
-  const [loc, setloc] = useState("");
 
 
 
-  const [loading, setLoading] = useState("");
-
-  useEffect(() => {
-    const onPageLoad = () => {
-      setLoading("hide");
-    };
-
-    // Check if the page has already loaded
-    if (document.readyState === "complete") {
-      onPageLoad();
-    } else {
-      window.addEventListener("load", onPageLoad);
-      // Remove the event listener when component unmounts
-      return () => window.removeEventListener("load", onPageLoad);
-    }
-  }, []);
 
   return (
     <>
-      <Load load={loading} />
+      <Load  />
 
       <div className="main-screen">
         <div className="page">
@@ -65,7 +45,6 @@ function Guest() {
 
           <div className="search">
             <SearchOffline 
-              
               userID="69"
             />
           </div>
@@ -117,12 +96,12 @@ function Guest() {
                 rotationIntensity={0.6}
                 floatIntensity={0.6}
               >
-                <Cloud />
-                <Suspense fallback={<>Loading</>}>
+              
+              
 
                 
                 <Map />
-                </Suspense>
+               
                 <Location
                  loc= {searches.location}
                  search= {searches.buildingID}
