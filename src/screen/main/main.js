@@ -21,7 +21,7 @@ import ArrowBackward from "../../media/image/arrow_back.svg";
 import { Load } from "../loader/loader";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { users } from "./../../cache/userCredentials";
 import { searchs,addSearch } from "../../cache/userSearch";
 import { rooms } from "../../cache/umapRoom";
@@ -80,12 +80,17 @@ function MainDasboard() {
       settimer(100000000)
       document.querySelector(".login").click();
     } else {
+<<<<<<< HEAD
+      settimer(1000)
+      setInterval(displayDateTime,timer );
+    }
+=======
       settimer(9000)
       setInterval(displayDateTime,timer );
     }
     
     
-  });
+  }, []);
 
   function getEvent() {
     axios
@@ -111,8 +116,9 @@ function MainDasboard() {
 
   return (
     <>
-      <Load time={1000} />
+      {/* <Load time={5000} /> */}
       
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
       <div className="main-screen  ">
         <div className="page">
           <div className="cloud-model-login  main-cloud">
@@ -228,6 +234,15 @@ function MainDasboard() {
                         }))
                       }}
                       onMouseOver={()=>{
+<<<<<<< HEAD
+                        setRoomSearch(`${sched.title}`);
+                        setloc(`| ${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`);
+                        setBuildingSearch(`${rooms.filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`);
+                        
+                        setRoomfloor(dateFormat(sched.date));
+                        setRoomblock(sched.time);
+                      }}/>
+=======
                         dispatch(addSearch({
                           "location":`| ${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.roomName)}`,
                           "buildingID":`${roomses[0].filter(z=>z.roomID == sched.roomID).map(e=>e.buildingNumber)}`,
@@ -240,6 +255,7 @@ function MainDasboard() {
                     />
 
 
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
                   ))}
 
 
@@ -270,18 +286,22 @@ function MainDasboard() {
             </div>
 
             <div className="map2d-con">
-              <TransformWrapper>
-                <TransformComponent>
-                  <img src={Map2d} alt="" />
-                </TransformComponent>
-              </TransformWrapper>
+            <TransformWrapper>
+              <TransformComponent>
+                <img src={Map2d} alt="" />
+              </TransformComponent>
+            </TransformWrapper>
+            
+              
             </div>
             
           </div>
           
           <Canvas>
-            <Suspense fallback={null}>
-              <Environment files={process.env.PUBLIC_URL + "/textures/light.hdr"} />
+          <Suspense fullback={null}>
+              <Environment
+                files={process.env.PUBLIC_URL + "/textures/light.hdr"}
+              />
 
               <PerspectiveCamera
                 makeDefault
@@ -303,6 +323,16 @@ function MainDasboard() {
                 <Map />
                 
                 <Location
+<<<<<<< HEAD
+                  search={buildingSearch}
+                  roomSearch={roomSearch}
+                  floor={roomfloor}
+                  block={roomblock}
+                  loc={loc}/>
+              </Float>
+
+            </Suspense>
+=======
                  loc= {searches.location}
                  search= {searches.buildingID}
                  roomSearch = {searches.room}
@@ -312,6 +342,7 @@ function MainDasboard() {
                 />
               </Float>
               </Suspense>
+>>>>>>> 0da2dfb7954a5a4cf5c27ee5eb32bf7c06d77cb1
           </Canvas>
         </div>
         <Link to="/umap" className="login"></Link>
