@@ -182,9 +182,10 @@
       width: 440px;
       min-height: 134px;
       max-height: 454px;
-      overflow-y: hidden;
+      overflow-y: scroll;
 
       padding-bottom: 2vh;
+      pointer-events: visible;
 
       /* From https://css.glass */
       background: rgba(255, 0, 0, 0.021);
@@ -209,7 +210,7 @@
         pointer-events: visible;
         background-color: #fdb417;
       }
-      pointer-events: none;
+      
 
       .event-header {
         height: 75px;

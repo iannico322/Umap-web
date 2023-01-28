@@ -185,14 +185,14 @@
   width: 440px;
   min-height: 134px;
   max-height: 454px;
-  overflow-y: hidden;
+  overflow-y: scroll;
   padding-bottom: 2vh;
+  pointer-events: visible;
   /* From https://css.glass */
   background: rgba(255, 0, 0, 0.021);
   backdrop-filter: blur(9.9px);
   -webkit-backdrop-filter: blur(9.9px);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  pointer-events: none;
 }
 
 .events .event-container .box::-webkit-scrollbar-track {
