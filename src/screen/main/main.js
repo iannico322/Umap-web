@@ -39,6 +39,8 @@ function MainDasboard() {
   
   const [mapzoom,setmapzoom] = useState(40)
 
+  const [dateToday,setdateToday] = useState("")
+  const [timeToday,settimeToday] = useState("")
 
   const [events, setEvents] = useState([]);
   const [schedules, setSchedules] = useState([]);
@@ -104,7 +106,52 @@ function MainDasboard() {
         setSchedules(response.data);
       });
   }
- 
+  const displayDateTime = () => {
+    var currentDateAndTime = new Date();
+    var month = currentDateAndTime.getMonth();
+    var day = currentDateAndTime.getDate();
+    var hours = currentDateAndTime.getHours();
+    var minutes = currentDateAndTime.getMinutes();
+    var monthNames = [
+      "JAN",
+      "FEB",
+      "MAR",
+      "APR",
+      "MAY",
+      "JUN",
+      "JUL",
+      "AUG",
+      "SEP",
+      "OCT",
+      "NOV",
+      "DEC",
+    ];
+    var monthName = monthNames[month];
+  
+    var dateString = monthName + " " + day;
+  
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    
+  
+    var amOrPm = hours < 12 ? "AM" : "PM";
+    if (hours > 12) {
+      hours -= 12;
+    }
+    if (hours === 0) {
+      hours = 12;
+    }
+    var timeString = hours + ":" + minutes + " " + amOrPm;
+  
+    setdateToday(dateString) ;
+    settimeToday(timeString) ;
+  };
+  
+
+
+
+
 
   return (
     <>
@@ -147,8 +194,8 @@ function MainDasboard() {
               <div className="box">
                 <div className="event-header">
                   <div className="clock">
-                    <div className="todaydate">DEC 15</div>
-                    <div className="todaytime">11:11 AM</div>
+                    <div className="todaydate">{dateToday}</div>
+                    <div className="todaytime">{timeToday}</div>
                   </div>
                   <div className="title-text">Upcoming Events</div>
                   <img
@@ -318,51 +365,5 @@ function MainDasboard() {
 }
 
 
-const displayDateTime = () => {
-  var date = document.querySelector(".todaydate");
-  var time = document.querySelector(".todaytime");
-  var currentDateAndTime = new Date();
-
-  var month = currentDateAndTime.getMonth();
-  var day = currentDateAndTime.getDate();
-  var hours = currentDateAndTime.getHours();
-  var minutes = currentDateAndTime.getMinutes();
-
-
-  var monthNames = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC",
-  ];
-  var monthName = monthNames[month];
-
-  var dateString = monthName + " " + day;
-
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-  
-
-  var amOrPm = hours < 12 ? "AM" : "PM";
-  if (hours > 12) {
-    hours -= 12;
-  }
-  if (hours === 0) {
-    hours = 12;
-  }
-  var timeString = hours + ":" + minutes + " " + amOrPm;
-
-  date.innerHTML = dateString;
-  time.innerHTML = timeString;
-};
 
 export default MainDasboard;
