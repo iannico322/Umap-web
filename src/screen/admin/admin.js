@@ -69,14 +69,7 @@ export const Admin = ({navigation}) => {
       });
   }
 
-  function getRoomsAdmin() {
-    axios
-      .get("http://localhost/umap-server/getRoomsAdmin.php")
-      .then(function (response) {
-        setroomdb(response.data);
-        console.log(response.data)
-      });
-  }
+ 
 
 
 
@@ -129,6 +122,26 @@ export const Admin = ({navigation}) => {
     fData.append("userid", user);
     axios
       .post("http://localhost/umap-server/banUser.php", fData)
+      .then(function (response) {
+        window.location.reload();
+      });
+  }
+
+
+  function getRoomsAdmin() {
+    axios
+      .get("http://localhost/umap-server/getRoomsAdmin.php")
+      .then(function (response) {
+        setroomdb(response.data);
+      });
+  }
+  function removeRomve(roomid) {
+    console.log(roomid)
+    console.log(typeof roomid)
+    let fData = new FormData();
+    fData.append("roomID", roomid);
+    axios
+      .post("http://localhost/umap-server/removeRoom.php", fData)
       .then(function (response) {
         window.location.reload();
       });
@@ -641,7 +654,7 @@ export const Admin = ({navigation}) => {
                             class="button-6"
                             role="button"
                             onClick={() => {
-                              acceptUser(room.ID);
+                              console.log("edit")
                             }}
                           >
                             Edit
@@ -651,7 +664,7 @@ export const Admin = ({navigation}) => {
                             class="button-6"
                             role="button"
                             onClick={() => {
-                              acceptUser(room.ID);
+                              removeRomve(room.roomID)
                             }}
                           >
                             Delete

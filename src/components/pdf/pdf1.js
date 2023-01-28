@@ -48,7 +48,7 @@ const MontlyReport = () => {
         <div ref={printRef} style={{height:window.innerHeight,width:'100%'}}>
             <div style={{width:"80%",margin:80}}>
                 <div style={{width:"100%",backgroundColor:"#fcb040",overflow:"hidden"}}>
-                    <h1 style={{color:"white",padding:20}}>Montly Report</h1>
+                    <h1 style={{color:"white",padding:20}}>Monthly Report</h1>
                  
                 </div>
                 
