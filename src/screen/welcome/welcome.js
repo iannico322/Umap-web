@@ -12,7 +12,7 @@ import "./welcome.css";
 import "animate.css";
 import {useEffect } from "react";
 import axios from "axios";
-
+import WaterMark from "../developers/watermark";
 
 
 export const Welcome = () => {
@@ -46,6 +46,7 @@ export const Welcome = () => {
    
 
     <Load time = {3000}/>
+    <WaterMark/>
       <div className="welcome-screen ">
         <Navbar
           link1="Sign In"
@@ -91,6 +92,7 @@ export const Welcome = () => {
         </div>
       </div>
       <Link to="/main" className="main"></Link>
+      
       <Link to="/login" className="Press"></Link>
       <Link to="/guest" className="guest"></Link>
      

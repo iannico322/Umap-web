@@ -21,17 +21,12 @@ import { useSelector } from "react-redux";
 import { searchs } from "../../cache/userSearch";
 import { SearchOffline } from "../../components/search/searchForOffline";
 function Guest() {
-
   const searches = useSelector(searchs);
-
   const [mapzoom, setmapzoom] = useState(40);
-
-
-
 
   return (
     <>
-      <Load  />
+      <Load />
 
       <div className="main-screen">
         <div className="page">
@@ -44,9 +39,7 @@ function Guest() {
           <Navbar3 />
 
           <div className="search">
-            <SearchOffline 
-              userID="69"
-            />
+            <SearchOffline userID="69" />
           </div>
 
           <div className="map2d-option">
@@ -67,7 +60,7 @@ function Guest() {
               </div>
             </div>
             <div className="map2d-con">
-            <TransformWrapper>
+              <TransformWrapper>
                 <TransformComponent>
                   <img src={Map2d} alt="" />
                 </TransformComponent>
@@ -76,44 +69,34 @@ function Guest() {
           </div>
 
           <Canvas>
-            
-              <Environment
-                files={process.env.PUBLIC_URL + "/textures/light.hdr"}
+            <Environment
+              files={process.env.PUBLIC_URL + "/textures/light.hdr"}
+            />
+
+            <PerspectiveCamera
+              makeDefault
+              fov={mapzoom}
+              position={[400, 0, -5]}
+            />
+
+            <OrbitControls target={[0, 0, 10]} maxPolarAngle={Math.PI * 0.4} />
+
+            <Float
+              speed={0.9}
+              position={[0, 0, 0]}
+              rotationIntensity={0.6}
+              floatIntensity={0.6}
+            >
+              <Map />
+
+              <Location
+                loc={searches.location}
+                search={searches.buildingID}
+                roomSearch={searches.room}
+                floor={searches.floor}
+                block={searches.block}
               />
-
-              <PerspectiveCamera
-                makeDefault
-                fov={mapzoom}
-                position={[400, 0, -5]}
-              />
-
-              <OrbitControls
-                target={[0, 0, 10]}
-                maxPolarAngle={Math.PI * 0.4}
-              />
-
-              <Float
-                speed={0.9}
-                position={[0, 0, 0]}
-                rotationIntensity={0.6}
-                floatIntensity={0.6}
-              >
-              
-              
-
-                
-                <Map />
-               
-                <Location
-                 loc= {searches.location}
-                 search= {searches.buildingID}
-                 roomSearch = {searches.room}
-                 floor = {searches.floor}
-                 block = {searches.block}
-
-                />
-              </Float>
-         
+            </Float>
           </Canvas>
         </div>
       </div>

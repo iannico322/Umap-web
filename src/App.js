@@ -16,13 +16,14 @@ import "./App.css";
 import "animate.css";
 import MontlyReport from "./components/pdf/pdf1";
 import DailyReport from "./components/pdf/pdf2";
+import Developers from "./screen/developers/developers";
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/umap-web" element={<Navigate replace to="/umap" />} />
         <Route path="/umap" element={<Welcome />} />
-        <Route path="/umap" element={<MontlyReport/>} />
+        <Route path="devs" element={<Developers />} />
         <Route path="login" element={<Login />} />
         <Route path="forgot" element={<Forgotpass />} />
         <Route path="profile" element={<Profile />} />
@@ -32,6 +33,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="reportMonth" element={<MontlyReport/>} />
         <Route path="reportDay" element={<DailyReport  />} />
+        
       </Routes>
     </Router>
   );

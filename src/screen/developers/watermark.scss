@@ -1,0 +1,46 @@
+.watermark-con{
+    pointer-events: none;
+    z-index: 100;
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    align-items: flex-end;
+    justify-content: flex-end;
+    code{
+        color: rgb(98, 98, 98);
+        padding: 16px;
+        display: flex;
+        align-items: flex-start;
+        font-size: 12px;
+        flex-direction: column;
+        div{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            .glitch{
+                pointer-events: visible;
+                margin-left: 1vw;
+                color: rgb(151, 151, 151);
+                font-weight: 700;
+                font-size: 16px;
+                letter-spacing: .2px;
+                &:hover{
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+
+            
+            }
+            .gdsc{
+                color: rgb(151, 151, 151);
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+        
+    }
+    
+}
