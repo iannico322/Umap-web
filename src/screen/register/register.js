@@ -75,7 +75,7 @@ export const Register = () => {
     }
   }, [password]);
 
-
+{/* <view>asd</view> */}
   useEffect(() => {
     
 
