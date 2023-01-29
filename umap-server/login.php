@@ -1,8 +1,6 @@
 <?php 
 
-	header('Access-Control-Allow-Origin: *');
-	
-	$conn = new mysqli("localhost","root","","umap_db");
+include 'source.php';
 	
 	if(mysqli_connect_error()){
 		echo mysqli_connect_error();

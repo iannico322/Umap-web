@@ -32,7 +32,7 @@ CREATE TABLE `buildings` (
   `buildingName` varchar(45) DEFAULT NULL,
   `noOfStories` varchar(10) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 --
 -- Dumping data for table `buildings`
@@ -337,7 +337,7 @@ CREATE TABLE `searchlogs` (
   `searchText` varchar(255) DEFAULT NULL,
   `timeStamp` varchar(100) DEFAULT NULL,
   `date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
 
 --
 -- Dumping data for table `searchlogs`
