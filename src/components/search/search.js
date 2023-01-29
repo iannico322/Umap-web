@@ -25,7 +25,7 @@ const displayTime = () => {
   console.log(timeString)
   return timeString
 }
-
+{/* <view>asd</view> */}
 
  
 const SearchLog = (text,userid)=>{
