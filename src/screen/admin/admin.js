@@ -537,7 +537,12 @@ export const Admin = ({navigation}) => {
                 }}
                 
                 >daily Report</Button>
-                <Button variant="outlined">weekly Report</Button>
+                <Button variant="outlined"
+                onClick={() => {
+                  document.querySelector(".reportWeek").click();
+                }}
+                
+                >weekly Report</Button>
 
                 <Button
                   variant="contained"
@@ -746,6 +751,7 @@ export const Admin = ({navigation}) => {
           </div>
         </div>
         <Link to="/reportDay" className="reportDay" target="_blank"></Link>
+        <Link to="/reportWeek" className="reportWeek" target="_blank"></Link>
         <Link to="/reportMonth" className="reportMonth" target="_blank"></Link>
         <Link to="/admin" className="admin"></Link>
       </div>

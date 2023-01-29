@@ -17,6 +17,7 @@ import "animate.css";
 import MontlyReport from "./components/pdf/pdf1";
 import DailyReport from "./components/pdf/pdf2";
 import Developers from "./screen/developers/developers";
+import WeeklyReport from "./components/pdf/pdf3";
 function App() {
   return (
     <Router>
@@ -33,7 +34,7 @@ function App() {
         <Route path="register" element={<Register />} />
         <Route path="reportMonth" element={<MontlyReport/>} />
         <Route path="reportDay" element={<DailyReport  />} />
-        
+        <Route path="reportWeek" element={<WeeklyReport  />} />
       </Routes>
     </Router>
   );
