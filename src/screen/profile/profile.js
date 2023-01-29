@@ -230,7 +230,9 @@ export const Profile = () => {
               <img src={Plus} alt="Plus-icon" />
             </div>
             {schedules.map((sched, key) => (
-              <div
+              
+              
+              <div key={key}
                 className="card"
                 onClick={() => {
                   dispatch(
