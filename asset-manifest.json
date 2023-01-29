@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/Umap-web/static/css/main.76a4e42f.css",
-    "main.js": "/Umap-web/static/js/main.c337bf07.js",
+    "main.css": "/Umap-web/static/css/main.a3ba1677.css",
+    "main.js": "/Umap-web/static/js/main.3404b305.js",
     "static/js/787.fe5dcdae.chunk.js": "/Umap-web/static/js/787.fe5dcdae.chunk.js",
     "static/media/2dmapc.jpg": "/Umap-web/static/media/2dmapc.78e8fea10ecfc74ddb63.jpg",
+    "static/media/map3d_2.png": "/Umap-web/static/media/map3d_2.1450140e87ccd508a60d.png",
     "static/media/cloud_1.png": "/Umap-web/static/media/cloud_1.337487a541787ded8c14.png",
-    "static/media/map3d_2.png": "/Umap-web/static/media/map3d_2.bb153d738c4a71604771.png",
-    "static/media/map3d_1.png": "/Umap-web/static/media/map3d_1.7a6058e18f8ffc1a655a.png",
+    "static/media/map3d_1.png": "/Umap-web/static/media/map3d_1.45854d5ff03d6a85d731.png",
     "static/media/cloud_2-big.png": "/Umap-web/static/media/cloud_2-big.7cab1c8d5e3833ccf004.png",
+    "static/media/aubrey.png": "/Umap-web/static/media/aubrey.f88753e1a439dafaa558.png",
+    "static/media/kyle.png": "/Umap-web/static/media/kyle.8f727041ab4bc17444d1.png",
+    "static/media/shek.png": "/Umap-web/static/media/shek.57762d63fe5341f9cd81.png",
+    "static/media/joy.png": "/Umap-web/static/media/joy.7413e385a1894d18396a.png",
+    "static/media/ian.png": "/Umap-web/static/media/ian.fbc0d20cf6d7e207b6d6.png",
     "static/media/cloud_2.png": "/Umap-web/static/media/cloud_2.65d11c865c598fa0820d.png",
     "static/media/ustp.png": "/Umap-web/static/media/ustp.fba6491190f601c5e87e.png",
+    "static/media/gdsc.png": "/Umap-web/static/media/gdsc.eaa49549b1514f346df6.png",
     "static/media/event-pic.png": "/Umap-web/static/media/event-pic.2b8c58f4287e4d62313b.png",
     "static/media/sched-pic.png": "/Umap-web/static/media/sched-pic.771c2e50b3e5b1d7f951.png",
     "static/media/umap-logo.png": "/Umap-web/static/media/umap-logo.ffa591be35d11a5c1fed.png",
@@ -21,12 +27,12 @@
     "static/media/menu.svg": "/Umap-web/static/media/menu.a5cae7a35ec793c5bbe410b86544df4b.svg",
     "static/media/arrow_forward.svg": "/Umap-web/static/media/arrow_forward.34aa7fcb3ffec8cfbf9136422e9bed25.svg",
     "static/media/arrow_back.svg": "/Umap-web/static/media/arrow_back.7f971537cfda8f1cde69e94817dee4b7.svg",
-    "main.76a4e42f.css.map": "/Umap-web/static/css/main.76a4e42f.css.map",
-    "main.c337bf07.js.map": "/Umap-web/static/js/main.c337bf07.js.map",
+    "main.a3ba1677.css.map": "/Umap-web/static/css/main.a3ba1677.css.map",
+    "main.3404b305.js.map": "/Umap-web/static/js/main.3404b305.js.map",
     "787.fe5dcdae.chunk.js.map": "/Umap-web/static/js/787.fe5dcdae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.76a4e42f.css",
-    "static/js/main.c337bf07.js"
+    "static/css/main.a3ba1677.css",
+    "static/js/main.3404b305.js"
   ]
 }
