@@ -45,7 +45,6 @@ export const SearchOffline = (props) => {
         let x = true;
         
         const dispatch = useDispatch();
-        const credentials = useSelector(users);
         const searches = useSelector(searchs);
         // const searchs = useSelector((state)=>state.search.value)
 

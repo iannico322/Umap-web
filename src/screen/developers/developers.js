@@ -6,9 +6,10 @@ import Ian from './../../media/ian.png'
 import Kyle from './../../media/kyle.png'
 import Aubrey from './../../media/aubrey.png'
 import Shek from './../../media/shek.png'
+import GDSC from './../../media/gdsc.png'
 import { useState } from 'react'
 const Developers = () => {
-    const [imagess ,setImages] = useState([Joy,Ian,Kyle,Aubrey,Shek])
+    const [imagess ,setImages] = useState([Joy,Ian,Kyle,Aubrey,Shek,GDSC])
   return (
     <div className='dev-con'>
        
@@ -16,11 +17,13 @@ const Developers = () => {
         
         <div className='dev-box'>
                 <div className='title-head'>
-                    <span className='team' style={{fontWeight:300,marginRight:20,fontSize:30,color:"white"}}>TEAM</span>
-                    <h1> COLLEGE CHETTAH</h1>
+                  <h1> COLLEGE CHEETAH</h1>
+                    <span className='team' style={{marginLeft:30,fontWeight:300,marginTop:40,fontSize:30,color:"white",letterSpacing:24}}>TEAM</span>
+                    
                 </div>
                 
                 <div className='imagesss'>
+                  
                         {imagess.map(e=>(
                         <img className='dev-card' src={e} alt="" />
                     ))}

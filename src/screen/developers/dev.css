@@ -28,14 +28,14 @@
 }
 
 .dev-con .dev-box .title-head h1 {
-  writing-mode: vertical-lr;
-  text-orientation: upright;
+  writing-mode: vertical-rl;
   text-transform: capitalize;
   font-size: 80px;
   color: #f7be1f;
   margin: 0;
   margin-bottom: 60px;
-  letter-spacing: -2px;
+  letter-spacing: 30px;
+  word-spacing: 0px;
   height: 50%;
   font-weight: 800;
 }

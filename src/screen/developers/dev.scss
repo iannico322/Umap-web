@@ -14,7 +14,7 @@
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
-       
+     
         gap: 1px;
         box-sizing: border-box;
         .title-head{
@@ -27,14 +27,15 @@
             flex-direction: column;
             flex-wrap: nowrap;
             h1{
-                writing-mode: vertical-lr;
-                text-orientation: upright;
+                writing-mode: vertical-rl;
+                // text-orientation: upright;
                 text-transform: capitalize;
                 font-size: 80px;
                 color: rgb(247, 190, 31);
                 margin: 0;
                 margin-bottom: 60px;
-                letter-spacing: -2px;
+                letter-spacing: 30px;
+                word-spacing: 0px;
                 height: 50%;
                 font-weight: 800;
             }
